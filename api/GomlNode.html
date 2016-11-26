@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GomlNode | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GomlNodeGomlNodeはGrimoireJSが扱うツリー構造のノードとなる重要なオブジェクトです。GomlNodeは、GrimoireInterfaceにregisterNodeされている情報を参照し、Gomlのパースなどで生成されます。このオブジェクトから、ノードをツリー上で操作することができます。また、ノードは複数のコンポーネントを包含して管理するので、それらに対しての操作を行うこと">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GomlNode">
+<meta property="og:url" content="http://grimoire.gl/api/GomlNode.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="GomlNodeGomlNodeはGrimoireJSが扱うツリー構造のノードとなる重要なオブジェクトです。GomlNodeは、GrimoireInterfaceにregisterNodeされている情報を参照し、Gomlのパースなどで生成されます。このオブジェクトから、ノードをツリー上で操作することができます。また、ノードは複数のコンポーネントを包含して管理するので、それらに対しての操作を行うこと">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GomlNode">
+<meta name="twitter:description" content="GomlNodeGomlNodeはGrimoireJSが扱うツリー構造のノードとなる重要なオブジェクトです。GomlNodeは、GrimoireInterfaceにregisterNodeされている情報を参照し、Gomlのパースなどで生成されます。このオブジェクトから、ノードをツリー上で操作することができます。また、ノードは複数のコンポーネントを包含して管理するので、それらに対しての操作を行うこと">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">API</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/api/index.html">Top-Level API</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/grimoirejs-fundamental.html">grimoirejs-fundamental</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/grimoirejs-math.html">grimoirejs-math</a>
+      </li>
+    
+      <li class="active">
+        <a href="/api/GomlNode.html">GomlNode</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/Component.html">Component</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">GomlNode</h1>
+    <h2 id="GomlNode"><a href="#GomlNode" class="headerlink" title="GomlNode"></a>GomlNode</h2><p>GomlNodeはGrimoireJSが扱うツリー構造のノードとなる重要なオブジェクトです。<br>GomlNodeは、GrimoireInterfaceにregisterNodeされている情報を参照し、Gomlのパースなどで生成されます。<br>このオブジェクトから、ノードをツリー上で操作することができます。<br>また、ノードは複数のコンポーネントを包含して管理するので、それらに対しての操作を行うことができます。</p>
+<p><strong>例</strong></p>
+<ul>
+<li>nameフィールド</li>
+<li>enabledフィールド</li>
+<li>childrenフィールド</li>
+<li>sendMessageメソッド</li>
+<li>…etc</li>
+</ul>
+<h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3>  <figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name: NSIdentity;</div></pre></td></tr></table></figure>
+<p>このノードの名前を示します。</p>
+<h3 id="enabled"><a href="#enabled" class="headerlink" title="enabled"></a>enabled</h3><p>このノードの有効・無効を切り替えます。<br>ただし、trueであっても親が無効化されているときはこのノードは無効化された状態になります。<br>無効の場合、子ノードを含めてisActiveがfalseになります。<br><strong>有効か無効かを判定したい場合は、enabledではなくisActiveを使用してください。</strong></p>
+<h3 id="isActive"><a href="#isActive" class="headerlink" title="isActive"></a>isActive</h3><p>このノードが有効か無効かを取得します。<br>無効になっている場合、メッセージを一切受信しません。</p>
+<h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><p>このノードがマウントされているかを示します。<br>マウントとは、所属するツリー構造がGrimoireInterfaceの管理下に置かれている状態を指します。<br>通常、すべてのノードはマウントされていますが、以下の場合にマウントされていない状態になります。</p>
+<ul>
+<li>新しいインスタンスを個別に作成した場合。</li>
+<li>ツリーからノードをデタッチした場合。</li>
+<li>Gomlからパースされる際、インスタンスが作成されてからパースが完了するまでの間。</li>
+</ul>
+<p>マウントされていない状態では、基本的にノードは機能していない状態となります。<br>また、ノードからメッセージを発行することもできません。<br>マウント状態が変更する際には、<strong>mount</strong>,<strong>unmount</strong>メッセージが発行されます。</p>
+<h3 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h3><p>このノードの所属するGrimoireInterfaceを返します。<br>ノードがマウントされていないときは例外を投げます。</p>
+<h3 id="deleted"><a href="#deleted" class="headerlink" title="deleted"></a>deleted</h3><p>このノードが削除されていることを示します。<br>削除されたノードは常に非マウント状態であり、再度マウントすることは一切できません。</p>
+<h3 id="companion"><a href="#companion" class="headerlink" title="companion"></a>companion</h3><p>ツリーの中で共有されるオブジェクトです。<br>つまり、同一goml中のすべてのノードで同じインスタンスを参照します。</p>
+<h3 id="parent"><a href="#parent" class="headerlink" title="parent"></a>parent</h3><p>このノードの親ノードを参照します。<br>ルートノードではnullになります。<br>ツリーにマウントされていない場合もnullになることがあります。</p>
+<h3 id="hasChildren"><a href="#hasChildren" class="headerlink" title="hasChildren"></a>hasChildren</h3><p>このノードが子ノードを持っているかを表します</p>
+<h3 id="getChildrenByClass"><a href="#getChildrenByClass" class="headerlink" title="getChildrenByClass"></a>getChildrenByClass</h3><p>class属性を指定して子要素を検索します。</p>
+<h3 id="getChildrenByNodeName"><a href="#getChildrenByNodeName" class="headerlink" title="getChildrenByNodeName"></a>getChildrenByNodeName</h3><p>ノード名を指定して子要素を検索します</p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><p>このノードと子ノードを再帰的に削除します。<br>削除されたノードはツリーからデタッチされ、<strong>再利用することはできません</strong>。<br>削除する際には<em>dispose</em>メッセージが送信されます。</p>
+<h3 id="sendMessage"><a href="#sendMessage" class="headerlink" title="sendMessage"></a>sendMessage</h3><p>このノードのコンポーネントにメッセージを送信します。</p>
+<h3 id="broadcastMessage"><a href="#broadcastMessage" class="headerlink" title="broadcastMessage"></a>broadcastMessage</h3><p>このノードと子要素に再帰的にメッセージを送信します。</p>
+<h3 id="addChildByName"><a href="#addChildByName" class="headerlink" title="addChildByName"></a>addChildByName</h3><p>ノード名と属性を指定して子ノードを追加します。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> childNode = node.addChildByName(<span class="string">"mesh"</span>,&#123;<span class="string">"geometry"</span>:<span class="string">"cube"</span>&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="addChild"><a href="#addChild" class="headerlink" title="addChild"></a>addChild</h3><p>ノードのインスタンスを指定して子ノードに追加します。<br>必要であればインデックスを指定することができます。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node.addChild(childNode);</div></pre></td></tr></table></figure></p>
+<h3 id="callRecursively"><a href="#callRecursively" class="headerlink" title="callRecursively"></a>callRecursively</h3><p>子ノードに再帰的に関数を呼び出します。</p>
+<h3 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild"></a>removeChild</h3><p>指定したノードのインスタンスが子ノードであれば<strong>削除</strong>します。</p>
+<h3 id="detachChild"><a href="#detachChild" class="headerlink" title="detachChild"></a>detachChild</h3><p>指定したノードのインスタンスが子ノードであれば<strong>デタッチ</strong>します。<br>デタッチとは、ツリー上から取り除かれることです。<br>マウントが解除されるので、<em>unmount</em>メッセージが送信されます。<br>マウントされた他のノードにaddChildすることで、再度マウントすることができます。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node1.detachChild(childNode);</div><div class="line">node2.addChild(childNode);</div></pre></td></tr></table></figure></p>
+<h3 id="detach"><a href="#detach" class="headerlink" title="detach"></a>detach</h3><p>このノードを<strong>デタッチ</strong>します。</p>
+<h3 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute"></a>getAttribute</h3><p>属性名を指定して値を取得します。<br>取得できるのは、このノードのデフォルトコンポーネントの属性です。<br><strong>オプショナルコンポーネントの属性は取得できません</strong>。<br>オプショナルコンポーネントの属性にアクセスする場合、そのコンポーネントのインスタンスか、そのコンポーネントを<br>対象とするコンポーネントインタフェースを経由することができます。</p>
+<h3 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute"></a>setAttribute</h3><p>属性名を指定して値を設定します。<br>詳細については<em>getAttribute</em>の項目を参照してください。</p>
+<h3 id="addAttribute"><a href="#addAttribute" class="headerlink" title="addAttribute"></a>addAttribute</h3><p>このノードに属性を追加します。<br>この属性はどのコンポーネントにも属さず、ノード自体の属性として扱われます。</p>
+<h3 id="setMounted"><a href="#setMounted" class="headerlink" title="setMounted"></a>setMounted</h3><p>システムで使用されます。<strong>使用しないでください。</strong></p>
+<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p>このノードの親ノードの子ノードとしてのインデックスです。<br>親が存在しないとき、-1を返します。</p>
+<h3 id="removeAttribute"><a href="#removeAttribute" class="headerlink" title="removeAttribute"></a>removeAttribute</h3><p>指定した属性を削除します。</p>
+<h3 id="addComponent"><a href="#addComponent" class="headerlink" title="addComponent"></a>addComponent</h3><p>このノードにオプショナルコンポーネントを追加します。</p>
+<h3 id="getComponents"><a href="#getComponents" class="headerlink" title="getComponents"></a>getComponents</h3><p>このノードのコンポーネントのリストを取得します。</p>
+<h3 id="getComponent"><a href="#getComponent" class="headerlink" title="getComponent"></a>getComponent</h3><p>名前を指定してコンポーネントを取得します。</p>
+<h3 id="resolveAttributesValue"><a href="#resolveAttributesValue" class="headerlink" title="resolveAttributesValue"></a>resolveAttributesValue</h3><p>システムで使用されます。<strong>使用しないでください。</strong></p>
+<h3 id="checkTreeConstraints"><a href="#checkTreeConstraints" class="headerlink" title="checkTreeConstraints"></a>checkTreeConstraints</h3><p>システムで使用されます。<strong>使用しないでください。</strong></p>
+<h3 id="notifyActivenessUpdate"><a href="#notifyActivenessUpdate" class="headerlink" title="notifyActivenessUpdate"></a>notifyActivenessUpdate</h3><p>システムで使用されます。<strong>使用しないでください。</strong></p>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/api/GomlNode.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

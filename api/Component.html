@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Component | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="コンポーネントは、ノードにアタッチされる機能を、それぞれ独立して扱うためのオブジェクトです。コンポーネントはツリー上のGomlNodeの一つのノードに所属し、ノードからメッセージを受けて動作します。
+nameこのコンポーネントの名前です
+attributesこのコンポーネントの属性のリストです。
+nodeこのコンポーネントが属するノードです
+elementこのコンポーネントに対応するdom要素です">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Component">
+<meta property="og:url" content="http://grimoire.gl/api/Component.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="コンポーネントは、ノードにアタッチされる機能を、それぞれ独立して扱うためのオブジェクトです。コンポーネントはツリー上のGomlNodeの一つのノードに所属し、ノードからメッセージを受けて動作します。
+nameこのコンポーネントの名前です
+attributesこのコンポーネントの属性のリストです。
+nodeこのコンポーネントが属するノードです
+elementこのコンポーネントに対応するdom要素です">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Component">
+<meta name="twitter:description" content="コンポーネントは、ノードにアタッチされる機能を、それぞれ独立して扱うためのオブジェクトです。コンポーネントはツリー上のGomlNodeの一つのノードに所属し、ノードからメッセージを受けて動作します。
+nameこのコンポーネントの名前です
+attributesこのコンポーネントの属性のリストです。
+nodeこのコンポーネントが属するノードです
+elementこのコンポーネントに対応するdom要素です">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">API</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/api/index.html">Top-Level API</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/grimoirejs-fundamental.html">grimoirejs-fundamental</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/grimoirejs-math.html">grimoirejs-math</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/GomlNode.html">GomlNode</a>
+      </li>
+    
+      <li class="active">
+        <a href="/api/Component.html">Component</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">Component</h1>
+    <p>コンポーネントは、ノードにアタッチされる機能を、それぞれ独立して扱うためのオブジェクトです。<br>コンポーネントはツリー上のGomlNodeの一つのノードに所属し、ノードからメッセージを受けて動作します。</p>
+<h2 id="name"><a href="#name" class="headerlink" title="name"></a>name</h2><p>このコンポーネントの名前です</p>
+<h2 id="attributes"><a href="#attributes" class="headerlink" title="attributes"></a>attributes</h2><p>このコンポーネントの属性のリストです。</p>
+<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><p>このコンポーネントが属するノードです</p>
+<h2 id="element"><a href="#element" class="headerlink" title="element"></a>element</h2><p>このコンポーネントに対応するdom要素です</p>
+<h2 id="isDefaultComponent"><a href="#isDefaultComponent" class="headerlink" title="isDefaultComponent"></a>isDefaultComponent</h2><p>このコンポーネントがデフォルトコンポーネントであるかを判定します。</p>
+<h2 id="enabled"><a href="#enabled" class="headerlink" title="enabled"></a>enabled</h2><p>コンポーネントの有効無効を設定、取得します。</p>
+<h2 id="companion"><a href="#companion" class="headerlink" title="companion"></a>companion</h2><p>このコンポーネントのノードのcompanionです。GomlNodeを参照してください。</p>
+<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>このコンポーネントのノードのtreeです。GomlNodeを参照してください。</p>
+<h2 id="getValue"><a href="#getValue" class="headerlink" title="getValue"></a>getValue</h2><p>属性値を取得します。</p>
+<h2 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute"></a>getAttribute</h2><p>属性を取得します。</p>
+<h2 id="removeEnabledObserver"><a href="#removeEnabledObserver" class="headerlink" title="removeEnabledObserver"></a>removeEnabledObserver</h2><p>addEnabledObserverで追加したオブザーバを削除します。</p>
+<h2 id="addEnabledObserver"><a href="#addEnabledObserver" class="headerlink" title="addEnabledObserver"></a>addEnabledObserver</h2><p>enabledの変化が通知されるオブザーバを登録します。</p>
+<h2 id="resolveDefaultAttributes"><a href="#resolveDefaultAttributes" class="headerlink" title="resolveDefaultAttributes"></a>resolveDefaultAttributes</h2><p>システムで使用されます。<strong>使用しないでください</strong>。</p>
+<h2 id="addAtribute"><a href="#addAtribute" class="headerlink" title="__addAtribute"></a>__addAtribute</h2><p><strong>カスタムコンポーネントを実装する場合に内部から利用します。</strong><br>このコンポーネントに属性を追加します。</p>
+<h2 id="removeAttributes"><a href="#removeAttributes" class="headerlink" title="__removeAttributes"></a>__removeAttributes</h2><p><strong>カスタムコンポーネントを実装する場合に内部から利用します。</strong><br>このコンポーネントから属性を削除します。</p>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/api/Component.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

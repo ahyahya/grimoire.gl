@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascriptでコンポーネントを扱う | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概要3章で行ったことと同様に、Grimoire.jsではコンポーネントをjavascriptから操作することができます。コンポーネントを操作するための機能として、ノードインターフェースではaddComponentメソッドを提供しています。
+学べること
+コンポーネントに関するjavascriptによる操作
+追加したコンポーネントの属性の変更
+
+コンポーネントの追加コンポーネントを追加するためにはad">
+<meta property="og:type" content="website">
+<meta property="og:title" content="javascriptでコンポーネントを扱う">
+<meta property="og:url" content="http://grimoire.gl/tutorial/05-handle-component-with-js.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="概要3章で行ったことと同様に、Grimoire.jsではコンポーネントをjavascriptから操作することができます。コンポーネントを操作するための機能として、ノードインターフェースではaddComponentメソッドを提供しています。
+学べること
+コンポーネントに関するjavascriptによる操作
+追加したコンポーネントの属性の変更
+
+コンポーネントの追加コンポーネントを追加するためにはad">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascriptでコンポーネントを扱う">
+<meta name="twitter:description" content="概要3章で行ったことと同様に、Grimoire.jsではコンポーネントをjavascriptから操作することができます。コンポーネントを操作するための機能として、ノードインターフェースではaddComponentメソッドを提供しています。
+学べること
+コンポーネントに関するjavascriptによる操作
+追加したコンポーネントの属性の変更
+
+コンポーネントの追加コンポーネントを追加するためにはad">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">TUTORIAL</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/tutorial/index.html">目次</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/01-getting-started.html">Grimorie.jsを使ってみる</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/02-handle-goml.html">GOMLを扱う</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/03-handle-goml-with-js.html">JavascriptでGOMLを扱う</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/04-handle-component.html">コンポーネントを扱う</a>
+      </li>
+    
+      <li class="active">
+        <a href="/tutorial/05-handle-component-with-js.html">javascriptでコンポーネントを扱う</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/06-node-and-component.html">ノードとコンポーネントの本質</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/07-create-component.html">コンポーネントの作成</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/10-create-node.html">ノードの作成</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/11-create-material.html">マテリアルの自作</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/12-create-post-effect.html">ポストエフェクトを作成する</a>
+      </li>
+    
+      <li class="">
+        <a href="/tutorial/13-create-plugin.html">プラグインを作成してみる</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">javascriptでコンポーネントを扱う</h1>
+    <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>3章で行ったことと同様に、Grimoire.jsではコンポーネントをjavascriptから操作することができます。<br>コンポーネントを操作するための機能として、ノードインターフェースでは<code>addComponent</code>メソッドを提供しています。</p>
+<h2 id="学べること"><a href="#学べること" class="headerlink" title="学べること"></a>学べること</h2><ul>
+<li>コンポーネントに関するjavascriptによる操作</li>
+<li>追加したコンポーネントの属性の変更</li>
+</ul>
+<h3 id="コンポーネントの追加"><a href="#コンポーネントの追加" class="headerlink" title="コンポーネントの追加"></a>コンポーネントの追加</h3><p>コンポーネントを追加するためには<code>addComponent</code>メソッドを使用します。<br>確認してみましょう。</p>
+<iframe class="editor" src="https://grimoiregl.github.io/grimoire.gl-example#t05-01"></iframe>
+
+<p>また、追加したコンポーネントに関しても、属性を変更することが可能です。<br>ここでは<code>&lt;camera&gt;</code>タグについている<code>MouseCameraControl</code>コンポーネントの属性を変更してみましょう。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$(<span class="string">"camera"</span>)(<span class="string">"MouseCameraControl"</span>).setAttribute(<span class="string">"zoomSpeed"</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<iframe class="editor" src="https://grimoiregl.github.io/grimoire.gl-example#t05-02"></iframe>
+
+<blockquote>
+<p>次は、GOMLのノードとコンポーネントの性質を考えてみます。Grimoire.jsのデータ構造を学びましょう。</p>
+<p><a href="/tutorial/06-node-and-component.html">ノードとコンポーネントの本質</a></p>
+</blockquote>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/tutorial/05-handle-component-with-js.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

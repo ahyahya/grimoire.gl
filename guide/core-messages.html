@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>コアメッセージ | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="すべてのメッセージは$から始まるメソッドによってハンドリングされます。これは、通常のメソッドとして作成したつもりのコンポーネントないのメソッドが別のコンポーネントが発行するメッセージによって起動してしまうことによるバグなどを抑制するためです。
+GrimoireJS自身が定義するメッセージ群treeInitialized1function $treeInitialized(c: ITreeIniti">
+<meta property="og:type" content="website">
+<meta property="og:title" content="コアメッセージ">
+<meta property="og:url" content="http://grimoire.gl/guide/core-messages.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="すべてのメッセージは$から始まるメソッドによってハンドリングされます。これは、通常のメソッドとして作成したつもりのコンポーネントないのメソッドが別のコンポーネントが発行するメッセージによって起動してしまうことによるバグなどを抑制するためです。
+GrimoireJS自身が定義するメッセージ群treeInitialized1function $treeInitialized(c: ITreeIniti">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="コアメッセージ">
+<meta name="twitter:description" content="すべてのメッセージは$から始まるメソッドによってハンドリングされます。これは、通常のメソッドとして作成したつもりのコンポーネントないのメソッドが別のコンポーネントが発行するメッセージによって起動してしまうことによるバグなどを抑制するためです。
+GrimoireJS自身が定義するメッセージ群treeInitialized1function $treeInitialized(c: ITreeIniti">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">GUIDE</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/guide/download.html">ダウンロード</a>
+      </li>
+    
+      <li class="active">
+        <a href="/guide/core-messages.html">コアメッセージ</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/index.html">ノード及びコンポーネントの概要</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/sort.html">sortシェーダー</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/plugin-specification.html">プラグイン仕様</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">コアメッセージ</h1>
+    <p>すべてのメッセージは<code>$</code>から始まるメソッドによってハンドリングされます。<br>これは、通常のメソッドとして作成したつもりのコンポーネントないのメソッドが別のコンポーネントが発行するメッセージによって起動してしまうことによるバグなどを抑制するためです。</p>
+<h2 id="GrimoireJS自身が定義するメッセージ群"><a href="#GrimoireJS自身が定義するメッセージ群" class="headerlink" title="GrimoireJS自身が定義するメッセージ群"></a>GrimoireJS自身が定義するメッセージ群</h2><h3 id="treeInitialized"><a href="#treeInitialized" class="headerlink" title="treeInitialized"></a>treeInitialized</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">$treeInitialized</span>(<span class="params">c: ITreeInitializedInfo</span>): <span class="title">void</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> ITreeInitializedInfo &#123;</div><div class="line">    ownerScriptTag: HTMLScriptElement; <span class="comment">// このGOMLを含んでいるスクリプトタグ</span></div><div class="line">    id: <span class="built_in">string</span>; <span class="comment">// 各ツリーに割り振られたユニークなID</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ツリーが初期化された際に呼び出されます。<br>初期のGOMLの中に記述されているノードが全て初期化されると呼び出されます。</p>
+<p>初期化後に追加されたいかなるコンポーネントには呼び出されることはありません。</p>
+<h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">$mount</span>(<span class="params"></span>):<span class="title">void</span></span>;</div></pre></td></tr></table></figure>
+<p>コンポーネントが属するノードがツリーに結びついた際に呼び出されます。</p>
+<h3 id="unmount"><a href="#unmount" class="headerlink" title="unmount"></a>unmount</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">$unmount</span>(<span class="params"></span>):<span class="title">void</span></span>;</div></pre></td></tr></table></figure>
+<p>コンポーネントが属しているノードがツリーからデタッチされた際に呼び出されます。</p>
+<h2 id="ノード初期化時のアルゴリズム"><a href="#ノード初期化時のアルゴリズム" class="headerlink" title="ノード初期化時のアルゴリズム"></a>ノード初期化時のアルゴリズム</h2><p>あるノードNが親ノードPに属するように新たにノードNをインスタンス化する際、以下のような順序で初期化されることが想定されている。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">1. CN = N,CP=P</div><div class="line">// コンポーネントの初期化処理</div><div class="line">2. CNをインスタンス化</div><div class="line">3. FOR c &lt;= すべてのCNの必須コンポーネント</div><div class="line">3-1. cをインスタンス化してNへセット</div><div class="line">3-2. FOR a &lt;= すべてのcの属性</div><div class="line">3-2-1. aをインスタンス化してcにセット</div><div class="line">3-2-2. aがCNの属性であると記録</div><div class="line"></div><div class="line">4. c &lt;= すべてのCNの追加コンポーネント(GOMLないで.COMPONENTSにより指定されたコンポーネント)</div><div class="line">4-1. cをインスタンス化してCNへセット</div><div class="line">4-2. FOR a &lt;= すべてのcの属性</div><div class="line">4-2-1 aをインスタンス化してcにセット</div><div class="line">// 追加コンポーネントはコンポーネントのノードへ直接属性を記述するのでaがCNの属性であると記録する必要はなし</div><div class="line"></div><div class="line">5. CN.parent = CP</div><div class="line">6. CP = CN</div><div class="line"></div><div class="line">7. CNに子ノードがいる場合は、2-7を繰り返す。(この処理が終わると、Nを根とするデタッチされたツリーが生成される。)</div><div class="line">(この時点で、コンポーネントではコンストラクタ以外は一切呼ばれておらず、属性も初期値の割り当ても一切行われていない)</div><div class="line"></div><div class="line">8. IF (P がnullでない &amp;&amp; Pがマウント済み) || Pはnullであるが、Nがgomlのルートである(ルートでもなくPがnullなものは含まない(ただのデタッチされたツリー))</div><div class="line">8-1. Nのすべてのenabledな必須コンポーネントの属性の初期値を割り当て。</div><div class="line">(GOMLの値 &gt; Nodeの初期値 &gt; Attributeの初期値　の優先度で割り当て)</div><div class="line">8-2. Nのすべてのenabledな追加コンポーネントの属性の初期値を割り当て。</div><div class="line">(GOMLの値 &gt; Attributeの初期値の優先度で割り当て)</div><div class="line">8-3. FOR c = Nに属するすべてのenabledなコンポーネント</div><div class="line">8-3-1. c.$awake(); // &lt;- 初のmountの前に呼び出される。どのコンポーネントに対しても必ず1回しか呼び出されない</div><div class="line">8-4. SendMessage(&apos;mount&apos;)</div></pre></td></tr></table></figure></p>
+<p>原則として、<strong>マウントされていないコンポーネントはいかなる処理も呼び出されない</strong>。これには属性の割り当ても含む。(コンストラクタを除く)<br>(属性の中にはtreeに属さなければ確定しない属性が存在しうるため(セレクタ指定など))</p>
+<p>ただし、コンポーネントのコンストラクタに限り、コンポーネントの作者は仮にツリーにマウントされていない状態の処理をすることはできる。<br>(基本的にコンストラクタの使用は推奨されない)</p>
+<p>すべての属性は以下の条件を満たす。</p>
+<ul>
+<li>すべての属性はコンバーターを一度通りコンポーネントに渡される。(defaultValueも含む)</li>
+<li>disabledなコンポーネントには値を渡さない。</li>
+<li>disabledなコンポーネントが属性変更をされた際、そのあとでenabledになったタイミングでコンポーネントに渡される。</li>
+</ul>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/guide/core-messages.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

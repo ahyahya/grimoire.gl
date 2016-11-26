@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ノード及びコンポーネントの概要 | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GOML概要Grimoire.jsの仕組みを理解するには、GOMLがどのように処理され、ノードやコンポーネントが構築されるのか、また属性がどのようにコンポーネントに割り当てられるのかを理解しなければなりません。この仕組みはXMLに準拠した記法であるGOMLであるがゆえに見た目上HTMLに非常に近いものとなっていますが、より一貫した思想を持って作成されています。
+GOMLにおけるノード1234567">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ノード及びコンポーネントの概要">
+<meta property="og:url" content="http://grimoire.gl/guide/index.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="GOML概要Grimoire.jsの仕組みを理解するには、GOMLがどのように処理され、ノードやコンポーネントが構築されるのか、また属性がどのようにコンポーネントに割り当てられるのかを理解しなければなりません。この仕組みはXMLに準拠した記法であるGOMLであるがゆえに見た目上HTMLに非常に近いものとなっていますが、より一貫した思想を持って作成されています。
+GOMLにおけるノード1234567">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ノード及びコンポーネントの概要">
+<meta name="twitter:description" content="GOML概要Grimoire.jsの仕組みを理解するには、GOMLがどのように処理され、ノードやコンポーネントが構築されるのか、また属性がどのようにコンポーネントに割り当てられるのかを理解しなければなりません。この仕組みはXMLに準拠した記法であるGOMLであるがゆえに見た目上HTMLに非常に近いものとなっていますが、より一貫した思想を持って作成されています。
+GOMLにおけるノード1234567">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">GUIDE</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/guide/download.html">ダウンロード</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/core-messages.html">コアメッセージ</a>
+      </li>
+    
+      <li class="active">
+        <a href="/guide/index.html">ノード及びコンポーネントの概要</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/sort.html">sortシェーダー</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/plugin-specification.html">プラグイン仕様</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">ノード及びコンポーネントの概要</h1>
+    <h1 id="GOML概要"><a href="#GOML概要" class="headerlink" title="GOML概要"></a>GOML概要</h1><p>Grimoire.jsの仕組みを理解するには、GOMLがどのように処理され、ノードやコンポーネントが構築されるのか、また属性がどのようにコンポーネントに割り当てられるのかを理解しなければなりません。<br>この仕組みはXMLに準拠した記法であるGOMLであるがゆえに見た目上HTMLに非常に近いものとなっていますが、より一貫した思想を持って作成されています。</p>
+<h2 id="GOMLにおけるノード"><a href="#GOMLにおけるノード" class="headerlink" title="GOMLにおけるノード"></a>GOMLにおけるノード</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">goml</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">renderers</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">renderer</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">camera</span>=<span class="string">".camera"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">renderers</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">scenes</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scene</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">camera</span> <span class="attr">class</span>=<span class="string">"camera"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">scene</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">scenes</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">goml</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>例1: GOMLの例</p>
+</blockquote>
+<p>例えば、以上のような例をみるとGOMLにおけるノードとは<code>goml</code>、<code>renderers</code>、<code>renderer</code>、<code>scenes</code>、<code>scene</code>や<code>camera</code>になります。<br>どのようなノードであれ、<code>id</code>及び<code>class</code>を属性として持てます。</p>
+<p>ノードは以下のような要素を持つデータ構造です。</p>
+<ul>
+<li>子要素(0個以上)</li>
+<li>親要素(0または1個)</li>
+<li>コンポーネント(0個以上)</li>
+<li>DOMParserによりパースされた対応するElement</li>
+</ul>
+<p><strong>親要素</strong>と<strong>子要素</strong>は言うまでもなく、ただのノードのツリー構造を表すためのものにすぎません。</p>
+<h3 id="コンポーネントの概説"><a href="#コンポーネントの概説" class="headerlink" title="コンポーネントの概説"></a>コンポーネントの概説</h3><p>ノードはコンポーネントを持ちます。コンポーネントはGrimoire.jsにおける一定の処理を行う単位になります。<br>コンポーネントはノードからAttributeあるいは属性と呼ばれる値を受け取り、それに合わせた処理を行います。<br><strong>この概念は基本的にゲームエンジンであるUnityに近い思想なので、これを理解しているとこの概念の理解は早いでしょう。</strong></p>
+<blockquote>
+<p>UnityにおけるコンポーネントとGrimoire.jsにおけるコンポーネントの違い</p>
+<p>以下のような関係を考えるとGrimoire.jsのコンポーネントは理解しやすいです。</p>
+<ul>
+<li>UnityにおけるGameobjectはGOMLのノードにあたります。</li>
+<li>UnityにおけるGameobjectのnameはノードのidにあたります。</li>
+<li>UnityにおけるGameobjectのtagやlayerはノードのclassで実現できます。</li>
+<li>UnityにおけるコンポーネントはGrimoire.jsにおけるコンポーネントと基本的に同義ですが、UnityはTransformを必ず持っているのが条件に対して、Grimoire.jsではどのようなノードでも持っていると保証されるコンポーネントは存在しません。</li>
+<li>つまり、ノードではあるが、シーン中に存在する(Unityにおけるヒエラルキー)に存在するとは限らないものが存在します。</li>
+</ul>
+</blockquote>
+<p>例えば、sceneの子要素として取り得るノード(例えば<code>camera</code>等)は必ず<code>Transformer</code>コンポーネントを所持しています。<br>Transformerコンポーネントはシーン中のモデルの姿勢(= 平行移動変形 + 回転変形 + 拡大変形)を計算します。</p>
+<p>そのため、Transformerコンポーネントは以下のような属性を受け取ります。</p>
+<ul>
+<li>position・・・座標(vector3型)</li>
+<li>rotation・・・回転(vector3型)</li>
+<li>scale・・・拡大率(vector3型)</li>
+</ul>
+<p>属性は必ず型を持ちます。(型については後述します。)</p>
+<h3 id="ノードの定義"><a href="#ノードの定義" class="headerlink" title="ノードの定義"></a>ノードの定義</h3><p>HTMLにおいては、近年のVirtual-DOMブームを除けば基本的にエンジニアが新たなHTMLタグを定義することはありません。<br>GOMLにおけるタグの定義は以下のような要素で成り立ちます。</p>
+<ul>
+<li>ノード名</li>
+<li>デフォルトコンポーネントリスト</li>
+<li>デフォルト値</li>
+</ul>
+<p>デフォルトコンポーネントとはそのノードをインスタンス化した際に自動でコンポーネントとしてそのノードに割り当てられるコンポーネントです。<br>例えば、<code>goml</code>ノードには以下のようなコンポーネントがデフォルトコンポーネントリストに含まれています。(これが全てではありません)</p>
+<ul>
+<li>CanvasInitiator・・・対象となる位置に<code>&lt;canvas&gt;</code>タグを配置し、<code>WebGLコンテキスト</code>を初期化するコンポーネント</li>
+<li>LoopManager・・・レンダリングなどの処理のためにGrimoire.js中で行われるループを管理し、適切に更新を呼び出すためのコンポーネント</li>
+<li>…etc</li>
+</ul>
+<p>通常、デフォルトコンポーネントリストが空なノードは何の役割も持ちません。新たなノードを作るということは、<strong>複数個のコンポーネントからなるノードがどう振る舞うか</strong>をノードのデフォルトノードのリストに追加することと同義になります。</p>
+<p>ノードはデフォルト値の連想配列を同時に所持します。このデフォルト値はコンポーネントの属性に同名の属性があり、かつユーザーがGOML側から新たな値を指定しない場合に用いられる値です。</p>
+<h3 id="コンポーネントの定義"><a href="#コンポーネントの定義" class="headerlink" title="コンポーネントの定義"></a>コンポーネントの定義</h3><p>Grimoire.jsにおけるコンポーネントの定義は以下のような要素を持ちます。</p>
+<ul>
+<li>コンポーネント名</li>
+<li>属性のリスト</li>
+<li>メソッドのリスト</li>
+</ul>
+<p>属性のリストとは、そのコンポーネントがどのような値を入力として受け取るかの、名称と型の連想配列です。</p>
+<p>メソッドのリストとは、そのコンポーネントの振る舞いを記述するためのメソッドです。詳しくは次の”メッセージのブロードキャスト”をみるとより概要が把握できるでしょう。</p>
+<h3 id="メッセージのブロードキャスト"><a href="#メッセージのブロードキャスト" class="headerlink" title="メッセージのブロードキャスト"></a>メッセージのブロードキャスト</h3><p>メッセージのブロードキャストはノードが持つ機能の一つです。あるノードにたいしてメッセージ”Update”を引数Xでブロードキャストするとは、あるノード及びその子孫全てにおいて、そのノードが持つコンポーネントの中に”Update”というメソッドがある場合これを引数Xを用いてこのメソッド呼びます。</p>
+<p>例えば、ノードに対するブロードキャストは以下のような関数の定義になっています。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GomlNode</span>#<span class="title">broadcastMessage</span>(<span class="params">layer:<span class="built_in">number</span>,message:<span class="built_in">string</span>,...args:<span class="built_in">any</span>[]</span>)</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GomlNode</span>#<span class="title">broadcastMessage</span>(<span class="params">message:<span class="built_in">string</span>,...args:[]</span>)</span>;</div></pre></td></tr></table></figure>
+<p>注) <code>X#A</code>とはクラスXにおけるインスタンスメソッドAを指すものとします。</p>
+<p>上記の定義を見ればわかる通り、第一引数に数値を受け取ることがあります。この数値layerは非負の整数であり、layer番目までの子要素に対してメッセージを送ることを意味します。<br>このため、<code>broadcastMessage(1,&quot;Update&quot;,X)</code>は自分と自分の直下の子供の要素に対してのみ、Updateメソッドが存在する場合呼び出します。</p>
+<p>このことからわかる通り、layerを省略してメッセージ名から記述を始めた際、つまり<code>broadcastMessage(&quot;Update&quot;,X)</code>を呼び出したような状況下においては、これは<code>broadcastMessage(Number.MAX_VAUE,&quot;Update&quot;,X)</code>と全く同値です。</p>
+<p>また、自分自身のコンポーネントだけを対象とする<code>broadcastMessage(0,&quot;Update&quot;,X)</code>のエイリアスとして<code>sendMessage(&quot;Update&quot;,X)</code>が存在します。</p>
+<p>Grimoire.jsにおける様々な処理はこのメッセージを利用して処理しています。</p>
+<p>例えば、最初にScene内のUpdateが呼ばれるまで以下のようなメッセージのブロードキャストを通して初期化が行われます。</p>
+<ol>
+<li>GOMLの読み込みによってすべてのノードの構築が終了すると、GomlParserは”TreeInitialized”メッセージをルート要素にsendMessageします。</li>
+<li><code>goml</code>ノード内にある<code>CanvasInitiator</code>がこのメッセージを受け取ると対象となるHTMLの位置に<code>&lt;canvas&gt;</code>を差し込みます。</li>
+<li>初期状態で読み込まなければいけないGOMLがすべて読み込まれると、<code>treePrepare</code>メッセージをルート要素からbroadcastMessageします。</li>
+<li>この際、<code>goml</code>要素内の<code>LoadManager</code>が<code>canvas</code>上にロード画面を表示します。</li>
+<li>その他の初期ロード時なければならないリソースはこの際に<code>LoadManager</code>コンポーネントに対してリソースの読み込み終了のためのハンドラーを登録します。</li>
+<li>すべてのハンドラーが解決されると、<code>LoadManager</code>は<code>goml</code>ノードの<code>LoopManager</code>コンポーネントに対してループを開始させます。</li>
+<li>以降毎回のループで<code>scene</code>のルートから<code>LoopManager</code>が<code>broadcastMessage(&quot;Update&quot;)</code>を行います。</li>
+</ol>
+<h3 id="属性及び型"><a href="#属性及び型" class="headerlink" title="属性及び型"></a>属性及び型</h3><p>コンポーネントは属性を0個以上持つことが可能です。<br>属性は以下のようなデータ構造を持つものです。</p>
+<ul>
+<li>属性名</li>
+<li>デフォルト値</li>
+<li>型名</li>
+</ul>
+<p>各型に対して定義されている以下のようなインターフェースを満たす関数を<code>コンバーター</code>と言います。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">converter</span>(<span class="params">rawValue:<span class="built_in">any</span></span>):<span class="title">any</span></span>;</div></pre></td></tr></table></figure>
+<p>通常、GOMLにより記述された属性は文字列として<code>converter</code>に渡され、コンポーネント内で利用する型に変換されます。<br>例えば、型に<code>vector3</code>を指定した場合はコンポーネント内部では、自動的にVector3クラスに変換されて取得できます。</p>
+<blockquote>
+<p>クエリと属性</p>
+<p>jQueryのようなクエリで検索できるNodeは、属性で検索する際にはいろいろな問題があります。<br>jQueryとは異なり、属性名と属性値での検索(例えば<code>camera[target=&#39;text&#39;]</code>)はできません。<br>これはコンバーターが逆変換が必ず可能とは限らないことと、すべての値が一意な表現と定まるとは限らないからです。<br>これは例えばrotation3がオイラー角か四元数あるいは任意軸回転により表現された文字列か定まらず、それらを同一視することが難しい、あるいはパフォーマンス的に望ましくない場合が多く想定されるからです。<br>ただし、クラスやidに関しては問題なく</p>
+</blockquote>
+<h1 id="より発展的な内容"><a href="#より発展的な内容" class="headerlink" title="より発展的な内容"></a>より発展的な内容</h1><h3 id="ノードの継承"><a href="#ノードの継承" class="headerlink" title="ノードの継承"></a>ノードの継承</h3>
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/guide/index.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

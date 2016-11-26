@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sortシェーダー | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="この記事はgrimoirejs-fundamentalを前提とした記事です。
+fundamental上のプログラムはWebGLによってcanvasに描画されます。このため、WebGLの仕様の一つに含まれるGLSLを用いてシェーダーをカスタマイズすることができます。fundamentalは直接GLSLをいじることも可能ですが、materialタグの整合性などを考慮すると、Grimoire.js用の拡">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sortシェーダー">
+<meta property="og:url" content="http://grimoire.gl/guide/sort.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="この記事はgrimoirejs-fundamentalを前提とした記事です。
+fundamental上のプログラムはWebGLによってcanvasに描画されます。このため、WebGLの仕様の一つに含まれるGLSLを用いてシェーダーをカスタマイズすることができます。fundamentalは直接GLSLをいじることも可能ですが、materialタグの整合性などを考慮すると、Grimoire.js用の拡">
+<meta property="og:image" content="https://i.gyazo.com/c78686bc267070f39e55c4c2e23e1f78.png">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sortシェーダー">
+<meta name="twitter:description" content="この記事はgrimoirejs-fundamentalを前提とした記事です。
+fundamental上のプログラムはWebGLによってcanvasに描画されます。このため、WebGLの仕様の一つに含まれるGLSLを用いてシェーダーをカスタマイズすることができます。fundamentalは直接GLSLをいじることも可能ですが、materialタグの整合性などを考慮すると、Grimoire.js用の拡">
+<meta name="twitter:image" content="https://i.gyazo.com/c78686bc267070f39e55c4c2e23e1f78.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">GUIDE</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/guide/download.html">ダウンロード</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/core-messages.html">コアメッセージ</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/index.html">ノード及びコンポーネントの概要</a>
+      </li>
+    
+      <li class="active">
+        <a href="/guide/sort.html">sortシェーダー</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/plugin-specification.html">プラグイン仕様</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">sortシェーダー</h1>
+    <p><strong>この記事はgrimoirejs-fundamentalを前提</strong>とした記事です。</p>
+<p>fundamental上のプログラムはWebGLによってcanvasに描画されます。このため、WebGLの仕様の一つに含まれるGLSLを用いてシェーダーをカスタマイズすることができます。<br>fundamentalは直接GLSLをいじることも可能ですが、<code>materialタグ</code>の整合性などを考慮すると、Grimoire.js用の拡張シェーダー記法(Sort(ソール、フランス語で呪文))を用いるとより良いでしょう。</p>
+<p>この記事では、このfundamentalが実装しているGLSLの独自拡張<code>Sort</code>(<strong>ソール</strong>)について解説します。</p>
+<h2 id="Sortの特徴"><a href="#Sortの特徴" class="headerlink" title="Sortの特徴"></a>Sortの特徴</h2><p>SortはGLSLに独自の構文を複数追加することで、GOML側への連携を強めたものです。そのため、独自拡張以外の部分については基本的にGLSLの文法が用いれます。</p>
+<p>また、単にシェーダー言語と言う特徴というより、シングルパス単体のシェーダーコードを記述する事を目的としています。マルチパスについては複数個のSortのシェーダーファイルを組み合わせることにより記述できます。</p>
+<p>この基本的な原則に加え、以下のような特徴を主に提供します。</p>
+<ul>
+<li>頂点シェーダーとフラグメントシェーダーを分離せず記述できます。</li>
+<li>よく使うシェーダーコードなどを外部解決可能です。</li>
+<li>シェーダー変数への代入が極めて簡易的になります。</li>
+</ul>
+<h2 id="マルチパス構文"><a href="#マルチパス構文" class="headerlink" title="マルチパス構文"></a>マルチパス構文</h2><p>マルチパスのSortのコードを構成するには<code>@Pass</code>ステートメントを利用します。この項以降のすべての説明はシングルパスSortの記述法ですが、<code>@Pass</code>によって区切られたSortのプログラムは別のパスとして動作します。</p>
+<p><strong>文法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@Pass</div><div class="line"> // First Pass</div><div class="line"> #ifdef VS</div><div class="line">     // ....</div><div class="line"> #endif</div><div class="line"> #ifdef FS</div><div class="line">     // ....</div><div class="line"> #endif</div><div class="line">@Pass</div><div class="line"> // SecoundPass</div><div class="line"> #ifdef VS</div><div class="line">     // ....</div><div class="line"> #endif</div><div class="line"> #ifdef FS</div><div class="line">     // ....</div><div class="line"> #endif</div></pre></td></tr></table></figure>
+<h2 id="パス制御構文"><a href="#パス制御構文" class="headerlink" title="パス制御構文"></a>パス制御構文</h2><p>Sortには複数個の、シングルパスをどのように構築するかを記述するための構文が存在します。この項ではこれらについて記述します。</p>
+<h3 id="頂点シェーダーとフラグメントシェーダー"><a href="#頂点シェーダーとフラグメントシェーダー" class="headerlink" title="頂点シェーダーとフラグメントシェーダー"></a>頂点シェーダーとフラグメントシェーダー</h3><p>sortとして読み込んだ際は、頂点シェーダーとして用いる場合、<code>#define VS</code>が、フラグメントシェーダーとして用いる場合は<code>#define FS</code>が挿入されます。<br>これを用いることで同一ファイルで双方のシェーダーを用いることが可能になります。</p>
+<p>例</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#ifdef VS</span></div><div class="line">  <span class="type">void</span> main()&#123;</div><div class="line">    <span class="built_in">gl_Position</span> = ~~~</div><div class="line">  &#125;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef FS</span></div><div class="line">  <span class="type">void</span> main()&#123;</div><div class="line">    <span class="built_in">gl_FragColor</span> = ~~~</div><div class="line">  &#125;</div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<p>あくまで、GLSLのマクロを利用したものなので、これらの<code>VS</code>で区切られたセクションや<code>FS</code>で区切られたセクションは複数回登場することもできます。</p>
+<h4 id="フラグメントシェーダー内でのprecision"><a href="#フラグメントシェーダー内でのprecision" class="headerlink" title="フラグメントシェーダー内でのprecision"></a>フラグメントシェーダー内でのprecision</h4><p>varying変数を用いる際に、以下のような記述をするとフラグメントシェーダーでの精度修飾子がついていないため問題が起きます。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">varying</span> <span class="type">vec2</span> vValue;</div><div class="line"></div><div class="line"><span class="meta">#ifdef VS</span></div><div class="line">  <span class="type">void</span> main()&#123;</div><div class="line">    <span class="built_in">gl_Position</span> = ~~~</div><div class="line">  &#125;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef FS</span></div><div class="line">  <span class="type">void</span> main()&#123;</div><div class="line">    <span class="built_in">gl_FragColor</span> = ~~~</div><div class="line">  &#125;</div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<p>これは、頂点シェーダー、フラグメントシェーダーともに使われる<code>varying vec2 vValue</code>が先頭にあるためにfloatの精度修飾がないため問題になるからです。<br>しかし、単に<code>precision mediump float;</code>と先頭に記述してしまえば、VSでも読み込まれてしまうのでエラーになってしまう。<br>そこで、<code>FS_PRECマクロ</code>や<code>VS_PRECマクロ</code>があらかじめシェーダーの先頭に追加される。</p>
+<p>それぞれの定義は以下のようになっている。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#ifdef FS</span></div><div class="line">  <span class="meta">#define FS_PREC(prec,type) precision prec type;</span></div><div class="line">  <span class="meta">#define VS_PREC(prec,type)</span></div><div class="line"><span class="meta">#endif</span></div><div class="line"><span class="meta">#ifdef VS</span></div><div class="line">  <span class="meta">#define VS_PREC(prec,type) precision prec type;</span></div><div class="line">  <span class="meta">#define FS_PREC(prec,type)</span></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<p>すなわち、シェーダーファイルの先頭に<code>FS_PREC(mediump,float)</code>と記述しておけば、実際にはフラグメントシェーダーの時にはmediump精度が用いられるようになる。</p>
+<h3 id="import文"><a href="#import文" class="headerlink" title="@import文"></a>@import文</h3><p><code>@import</code>はC++で言えば<code>#include</code>のような存在です。単に参照先のスクリプトファイルを指定位置に挿入します。</p>
+<p><strong>文法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import(&quot;ファイルパス&quot;)</div></pre></td></tr></table></figure>
+<p>ファイルパスとして受付可能なものは絶対パス及び相対パスです。一般的なURLとして動作します。<br>また、外部リクエストは増やしたくないが、共通のスクリプトが存在する場合は、特定のエイリアスをこのファイルパスに用いて実際にはプログラム中に既に含まれたコードないから<code>@import</code>を解決することができます。</p>
+<p>このような場合、<code>grimoirejs/lib/Material/ImportResolver</code>をrequireして、ImageResolverのコンストラクタへの参照を取得し以下のように記述することでこれを実現可能です。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImportResolver.addAliasToStatic(&quot;ThisIsAlias&quot;,&quot;何らかのコード&quot;);</div></pre></td></tr></table></figure>
+<p>このように記述すると、<code>@import(&quot;ThisIsAlias&quot;)</code>と言う表記に出くわすと、このコードが挿入されて外部に解決を試みません。</p>
+<h3 id="NoBlend-NoCull-NoDepth"><a href="#NoBlend-NoCull-NoDepth" class="headerlink" title="@NoBlend,@NoCull,@NoDepth"></a>@NoBlend,@NoCull,@NoDepth</h3><p><strong>文法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@NoBlend()</div></pre></td></tr></table></figure>
+<p>これらの関数に引数はありません。もし、これらの関数がSortのソースコード上に存在すると、fundamentalは自動的にこのコードを実行する前に対応する<code>gl.disable</code>を呼び出します。</p>
+<h3 id="CullFace-BlendFunc-BlendFuncSeparate-BlendEquation-BlendEquationSeparate-DepthFunc"><a href="#CullFace-BlendFunc-BlendFuncSeparate-BlendEquation-BlendEquationSeparate-DepthFunc" class="headerlink" title="@CullFace,@BlendFunc,@BlendFuncSeparate,@BlendEquation,@BlendEquationSeparate,@DepthFunc"></a>@CullFace,@BlendFunc,@BlendFuncSeparate,@BlendEquation,@BlendEquationSeparate,@DepthFunc</h3><p>それぞれに対応したWebGLの関数を呼び出します。また、引数は定数名をそのまま記入します。</p>
+<p><strong>文法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@CullFace(FRONT)</div></pre></td></tr></table></figure>
+<p>例えば、以上のような例では<code>gl.cullFace(gl.FRONT)</code>をパスの開始時に呼び出すのと同等の結果として処理されます。</p>
+<p>また、上記の関数の存在に応じてそれぞれ以下のように自動的に<code>gl.enable</code>が挿入されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">enableされる先</th>
+<th style="text-align:center">Sort内に存在する命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DEPTH_TEST</td>
+<td style="text-align:center">@DepthFunc</td>
+</tr>
+<tr>
+<td style="text-align:center">BLEND</td>
+<td style="text-align:center">@BlendFunc,@BlendEquationSeparate,@BlendEquation,@BlendEquationSeparate</td>
+</tr>
+<tr>
+<td style="text-align:center">CULL_FACE</td>
+<td style="text-align:center">@CullFace</td>
+</tr>
+</tbody>
+</table>
+<h2 id="変数Annotation"><a href="#変数Annotation" class="headerlink" title="変数Annotation"></a>変数Annotation</h2><p>Sortにおける各uniform変数は<code>変数Annotation</code>を受けることが可能です。これは、変数の内容を登録するレジストラに対して、どのような内容の変数を希望するのか記述するものです。<br>例えば、あるuniform変数testは以下のようにして変数Annotation<code>default</code>を受け付けることが可能です。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@&#123;default:&quot;1,2,3,4&quot;&#125;</div><div class="line">uniform vec4 test;</div></pre></td></tr></table></figure>
+<p>これにより、仮にユーザーがこの変数testになにも指定しなくても、testには初期値として<code>(1,2,3,4)</code>が代入された状態でシェーダーが実行されるようになります。<br>他にも、型や環境Uniform変数の種類によってその他の変数Annotationが意味がある/必須である場合があります。</p>
+<h2 id="環境Uniform変数"><a href="#環境Uniform変数" class="headerlink" title="環境Uniform変数"></a>環境Uniform変数</h2><p>以下のように<code>_</code>から変数名が始まる変数は<code>環境Uniform変数</code>になります。これらはGOML側に公開されず、対応する変数名のレジストラーが登録されている時には代入されます。<br>例えば、以下のような例では、<code>_time</code>には自動的にGrimoire.js読み込み時からの時間が代入されるようになっています。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uniform float _time;</div></pre></td></tr></table></figure>
+<p>環境Uniform変数は変数名によって代入されます。環境Uniform変数として問題なく動作するためには、その型と変数名について想定する型と合致していなければなりません。</p>
+<p>以下はfundamentalがデフォルトで定義している環境Uniform変数です。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">変数型</th>
+<th style="text-align:center">変数名</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">_time</td>
+<td style="text-align:center">Grimoire.js読み込み時からの時間</td>
+</tr>
+<tr>
+<td style="text-align:center">vec2</td>
+<td style="text-align:center">_viewportSize</td>
+<td style="text-align:center">レンダリング対象のビューポートサイズ(px単位)</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matM</td>
+<td style="text-align:center">モデル行列</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matV</td>
+<td style="text-align:center">ビュー行列</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matP</td>
+<td style="text-align:center">プロジェクション行列</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matPV</td>
+<td style="text-align:center">プロジェクション * ビュー行列</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matVM</td>
+<td style="text-align:center">ビュー行列 * モデル行列</td>
+</tr>
+<tr>
+<td style="text-align:center">mat4</td>
+<td style="text-align:center">_matPVM</td>
+<td style="text-align:center">レンダリング対象のモデルのプロジェクション行列 * ビュー行列 * モデル行列</td>
+</tr>
+<tr>
+<td style="text-align:center">vec3</td>
+<td style="text-align:center">_cameraPosition</td>
+<td style="text-align:center">カメラ座標(ワールド座標系)</td>
+</tr>
+<tr>
+<td style="text-align:center">vec3</td>
+<td style="text-align:center">_cameraDirection</td>
+<td style="text-align:center">カメラ向き(ワールド座標系)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ユーザーUniform変数"><a href="#ユーザーUniform変数" class="headerlink" title="ユーザーUniform変数"></a>ユーザーUniform変数</h2><p>前述した環境Uniform変数とは異なり、<code>_</code>によって<strong>先導されない</strong>uniform変数を<code>ユーザーUniform変数</code>と言います。<br>このような変数は、自動的に<code>material</code>タグなどから操作できるようになります。その際用いられるコンバーターや初期値(defaultアノテーションが存在しない場合)は以下のようになります。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">変数型</th>
+<th style="text-align:center">コンバーター名</th>
+<th style="text-align:center">初期値(defaultアノテーションが存在しない際)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">vec2</td>
+<td style="text-align:center">Vector2</td>
+<td style="text-align:center">(0,0)</td>
+</tr>
+<tr>
+<td style="text-align:center">vec3</td>
+<td style="text-align:center">Vector3(type変数Annotationがcolorの場合はColor3)</td>
+<td style="text-align:center">(0,0,0)</td>
+</tr>
+<tr>
+<td style="text-align:center">vec4</td>
+<td style="text-align:center">Vector4(type変数Annotationがcolorの場合はColor4)</td>
+<td style="text-align:center">(0,0,0,0)</td>
+</tr>
+<tr>
+<td style="text-align:center">float[]</td>
+<td style="text-align:center">NumberArray</td>
+<td style="text-align:center">[0,0,….0](配列長はシェーダー内の指定による)</td>
+</tr>
+<tr>
+<td style="text-align:center">sampler2D</td>
+<td style="text-align:center">MaterialTexture</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<p>ユーザーUniform変数は、自動的にGOML側で操作できるようになります。<br>例えば、Sort内に<code>uniform vec3 something;</code>というようなものがあると、これはユーザーuniform変数なのでこのSortを扱っているタグ側の属性になります。<br>例えば、このマテリアルがある<code>mesh</code>タグに紐付いているならば、そのタグ内で<code>&lt;mesh something=&quot;1,2,3&quot;&gt;</code>と記述することにより、そのマテリアルが使われる際には、(1,2,3)のベクトルがuniform変数に代入されて用いられます。</p>
+<p>また、vec3,vec4の変数アノテーションとして<code>type</code>アノテーションに<code>color</code>を指定するとユーザーがタグから色としてベクトルに値を渡すことができるようになります。</p>
+<p>例</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@&#123;type:"color"&#125;</div><div class="line">uniform vec3 specularColor;</div><div class="line"></div><div class="line">@&#123;type:"color"&#125;</div><div class="line">uniform vec4 albedoColor;</div></pre></td></tr></table></figure>
+<h3 id="texture使用フラグ"><a href="#texture使用フラグ" class="headerlink" title="texture使用フラグ"></a>texture使用フラグ</h3><p>テクスチャを利用する場合、テクスチャが指定されていなかった場合の処理も記述したいことがある。<br>そのような場合のために、<code>sampler2D</code>型の変数のアノテーションには<code>usedFlag</code>アノテーションがあり、テクスチャが使用されているかどうかのフラグを別の変数に代入することができる。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@&#123;usedFlag:"flagOfTexture"&#125;</div><div class="line">uniform sampler2D texture;</div><div class="line"></div><div class="line">uniform bool flagOfTexture; // textureがタグから挿入されている場合のみtrueが代入される。</div></pre></td></tr></table></figure>
+<h2 id="挿入済みマクロ"><a href="#挿入済みマクロ" class="headerlink" title="挿入済みマクロ"></a>挿入済みマクロ</h2><p>よく使う定数などいくつかのマクロはデフォルトでヘッダーとしてシェーダーに挿入される。<br>以下は、初期状態で挿入されるヘッダーのコードである。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*Header start*/</span></div><div class="line"><span class="comment">// helper macros</span></div><div class="line"><span class="meta">#ifdef FS</span></div><div class="line">  <span class="meta">#define FS_PREC(prec,type) precision prec type;</span></div><div class="line">  <span class="meta">#define VS_PREC(prec,type)</span></div><div class="line"><span class="meta">#endif</span></div><div class="line"><span class="meta">#ifdef VS</span></div><div class="line"><span class="meta">#define VS_PREC(prec,type) precision prec type;</span></div><div class="line"><span class="meta">#define FS_PREC(prec,type)</span></div><div class="line"><span class="meta">#endif</span></div><div class="line"><span class="comment">// constants</span></div><div class="line"><span class="meta">#define PI 3.141592653589793</span></div><div class="line"><span class="meta">#define E 2.718281828459045</span></div><div class="line"><span class="meta">#define LN2 0.6931471805599453</span></div><div class="line"><span class="meta">#define LN10 2.302585092994046</span></div><div class="line"><span class="meta">#define LOG2E 1.4426950408889634</span></div><div class="line"><span class="meta">#define LOG10E 0.4342944819032518</span></div><div class="line"><span class="meta">#define SQRT2 1.4142135623730951</span></div><div class="line"><span class="meta">#define SQRT1_2 0.7071067811865476</span></div><div class="line"><span class="comment">/*Header end*/</span></div></pre></td></tr></table></figure>
+<h2 id="例"><a href="#例" class="headerlink" title="例"></a>例</h2><h3 id="edge-sprite-sort"><a href="#edge-sprite-sort" class="headerlink" title="edge-sprite.sort"></a>edge-sprite.sort</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">@Pass</div><div class="line">@DepthFunc(LEQUAL)</div><div class="line">@CullFace(BACK)</div><div class="line">attribute vec3 position;</div><div class="line"></div><div class="line">@vert&#123;</div><div class="line">   uniform mat4 _matPVM;</div><div class="line">   void main()&#123;</div><div class="line">      gl_Position = _matPVM * vec4(position,1);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@frag&#123;</div><div class="line">  @&#123;type:"color", default:"pink"&#125;</div><div class="line">  uniform vec4 color;</div><div class="line"></div><div class="line">  void main()&#123;</div><div class="line">     gl_FragColor = color;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@Pass</div><div class="line">@DepthFunc(LEQUAL)</div><div class="line">@CullFace(FRONT)</div><div class="line">FS_PREC(mediump,float)</div><div class="line"></div><div class="line">#ifdef VS</div><div class="line">   attribute vec3 position;</div><div class="line">   uniform mat4 _matPVM;</div><div class="line"></div><div class="line">   @&#123;default:"1.1"&#125;</div><div class="line">   uniform float edgeScale;</div><div class="line">   void main()&#123;</div><div class="line">      gl_Position = _matPVM * vec4(position * edgeScale,1);</div><div class="line">   &#125;</div><div class="line">#endif</div><div class="line"></div><div class="line">#ifdef FS</div><div class="line">  @&#123;type:"color", default:"black"&#125;</div><div class="line">  uniform vec4 edgeColor;</div><div class="line"></div><div class="line">  void main()&#123;</div><div class="line">     gl_FragColor = edgeColor;</div><div class="line">  &#125;</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h3 id="扱っているgoml"><a href="#扱っているgoml" class="headerlink" title="扱っているgoml"></a>扱っているgoml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">goml</span> <span class="attr">width</span>=<span class="string">"512"</span> <span class="attr">height</span>=<span class="string">"512"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">import-material</span> <span class="attr">typeName</span>=<span class="string">"edgeSprite"</span> <span class="attr">src</span>=<span class="string">"./edge-sprite.sort"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">geometry</span> <span class="attr">name</span>=<span class="string">"sphere"</span> <span class="attr">type</span>=<span class="string">"sphere"</span> <span class="attr">divHorizontal</span>=<span class="string">"40"</span> <span class="attr">divVertical</span>=<span class="string">"40"</span>/&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">renderers</span> <span class="attr">bgColor</span>=<span class="string">"#0000"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">renderer</span> <span class="attr">camera</span>=<span class="string">".camera"</span> <span class="attr">viewport</span>=<span class="string">"0,0,100%,100%"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">render-scene</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">renderer</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">renderers</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scene</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">camera</span> <span class="attr">class</span>=<span class="string">"camera"</span> <span class="attr">near</span>=<span class="string">"0.01"</span> <span class="attr">far</span>=<span class="string">"40.0"</span> <span class="attr">aspect</span>=<span class="string">"1.0"</span> <span class="attr">fovy</span>=<span class="string">"45d"</span> <span class="attr">position</span>=<span class="string">"0,0,10"</span> <span class="attr">rotation</span>=<span class="string">"y(0d)"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">camera.components</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">MouseCameraControl</span> <span class="attr">rotateX</span>=<span class="string">"10"</span> <span class="attr">moveSpeed</span>=<span class="string">"0.1"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">camera.components</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">camera</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">mesh</span> <span class="attr">geometry</span>=<span class="string">"sphere"</span> <span class="attr">material</span>=<span class="string">"new(edgeSprite)"</span> <span class="attr">edgeColor</span>=<span class="string">"red"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">scene</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">goml</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="読み込み側のhtml"><a href="#読み込み側のhtml" class="headerlink" title="読み込み側のhtml"></a>読み込み側のhtml</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../product/index.es2016.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> <span class="comment">&lt;!--Grimoire.js本体--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">type</span>=<span class="string">"text/goml"</span> <span class="attr">src</span>=<span class="string">"./sample.goml"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="結果画像"><a href="#結果画像" class="headerlink" title="結果画像"></a>結果画像</h3><p><img src="https://i.gyazo.com/c78686bc267070f39e55c4c2e23e1f78.png" alt="https://i.gyazo.com/c78686bc267070f39e55c4c2e23e1f78.png"></p>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/guide/sort.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

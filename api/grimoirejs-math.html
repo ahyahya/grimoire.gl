@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>grimoirejs-math | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="AABBWidth of this AABB
+1public get Width()
+Height of this AABB
+1public get Height()
+Distance of this AABB
+1public get Distance()
+Calculate new bounding box with considering the new point is included.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="grimoirejs-math">
+<meta property="og:url" content="http://grimoire.gl/api/grimoirejs-math.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="AABBWidth of this AABB
+1public get Width()
+Height of this AABB
+1public get Height()
+Distance of this AABB
+1public get Distance()
+Calculate new bounding box with considering the new point is included.">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="grimoirejs-math">
+<meta name="twitter:description" content="AABBWidth of this AABB
+1public get Width()
+Height of this AABB
+1public get Height()
+Distance of this AABB
+1public get Distance()
+Calculate new bounding box with considering the new point is included.">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">API</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/api/index.html">Top-Level API</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/grimoirejs-fundamental.html">grimoirejs-fundamental</a>
+      </li>
+    
+      <li class="active">
+        <a href="/api/grimoirejs-math.html">grimoirejs-math</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/GomlNode.html">GomlNode</a>
+      </li>
+    
+      <li class="">
+        <a href="/api/Component.html">Component</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">grimoirejs-math</h1>
+    <h2 id="AABB"><a href="#AABB" class="headerlink" title="AABB"></a>AABB</h2><p>Width of this AABB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Width()</div></pre></td></tr></table></figure>
+<p>Height of this AABB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Height()</div></pre></td></tr></table></figure>
+<p>Distance of this AABB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Distance()</div></pre></td></tr></table></figure>
+<p>Calculate new bounding box with considering the new point is included. @param {Vector3} newPoint the point that will be considered that it should be in this bounding box.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public expandAABB(newPoint: Vector3): void</div></pre></td></tr></table></figure>
+<p>Clean up this AABB with initial value.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public clear(): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaCuboid(): string</div></pre></td></tr></table></figure>
+<h2 id="Color3"><a href="#Color3" class="headerlink" title="Color3"></a>Color3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static fromColor4(col: Color4): Color3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static parse(color: string, tryParse?: boolean): Color3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static internalParse(color: string, isFirst: boolean, tryParse?: boolean): Color3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(col1: Color3, col2: Color3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toVector(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toVector4(a?: number): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get R(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get G(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get B(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(col: Color3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toDisplayString(): string</div></pre></td></tr></table></figure>
+<h2 id="Color4"><a href="#Color4" class="headerlink" title="Color4"></a>Color4</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static internalParse(color: string, isFirst: boolean, tryParse?: boolean): Color4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static parse(color: string, tryParse?: boolean): Color4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(col1: Color4, col2: Color4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get R(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get G(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get B(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get A(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toVector(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(col: Color4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toDisplayString(): string</div></pre></td></tr></table></figure>
+<h2 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;aliceblue&quot;: &quot;#F0F8FF&quot;,</div><div class="line">  &quot;antiquewhite&quot;: &quot;#FAEBD7&quot;,</div><div class="line">  &quot;aqua&quot;: &quot;#00FFFF&quot;,</div><div class="line">  &quot;aquamarine&quot;: &quot;#7FFFD4&quot;,</div><div class="line">  &quot;azure&quot;: &quot;#F0FFFF&quot;,</div><div class="line">  &quot;beige&quot;: &quot;#F5F5DC&quot;,</div><div class="line">  &quot;bisque&quot;: &quot;#FFE4C4&quot;,</div><div class="line">  &quot;black&quot;: &quot;#000000&quot;,</div><div class="line">  &quot;blanchedalmond&quot;: &quot;#FFEBCD&quot;,</div><div class="line">  &quot;blue&quot;: &quot;#0000FF&quot;,</div><div class="line">  &quot;blueviolet&quot;: &quot;#8A2BE2&quot;,</div><div class="line">  &quot;brown&quot;: &quot;#A52A2A&quot;,</div><div class="line">  &quot;burlywood&quot;: &quot;#DEB887&quot;,</div><div class="line">  &quot;cadetblue&quot;: &quot;#5F9EA0&quot;,</div><div class="line">  &quot;chartreuse&quot;: &quot;#7FFF00&quot;,</div><div class="line">  &quot;chocolate&quot;: &quot;#D2691E&quot;,</div><div class="line">  &quot;coral&quot;: &quot;#FF7F50&quot;,</div><div class="line">  &quot;cornflowerblue&quot;: &quot;#6495ED&quot;,</div><div class="line">  &quot;cornsilk&quot;: &quot;#FFF8DC&quot;,</div><div class="line">  &quot;crimson&quot;: &quot;#DC143C&quot;,</div><div class="line">  &quot;cyan&quot;: &quot;#00FFFF&quot;,</div><div class="line">  &quot;darkblue&quot;: &quot;#00008B&quot;,</div><div class="line">  &quot;darkcyan&quot;: &quot;#008B8B&quot;,</div><div class="line">  &quot;darkgoldenrod&quot;: &quot;#B8860B&quot;,</div><div class="line">  &quot;darkgray&quot;: &quot;#A9A9A9&quot;,</div><div class="line">  &quot;darkgreen&quot;: &quot;#006400&quot;,</div><div class="line">  &quot;darkgrey&quot;: &quot;#A9A9A9&quot;,</div><div class="line">  &quot;darkkhaki&quot;: &quot;#BDB76B&quot;,</div><div class="line">  &quot;darkmagenta&quot;: &quot;#8B008B&quot;,</div><div class="line">  &quot;darkolivegreen&quot;: &quot;#556B2F&quot;,</div><div class="line">  &quot;darkorange&quot;: &quot;#FF8C00&quot;,</div><div class="line">  &quot;darkorchid&quot;: &quot;#9932CC&quot;,</div><div class="line">  &quot;darkred&quot;: &quot;#8B0000&quot;,</div><div class="line">  &quot;darksalmon&quot;: &quot;#E9967A&quot;,</div><div class="line">  &quot;darkseagreen&quot;: &quot;#8FBC8F&quot;,</div><div class="line">  &quot;darkslateblue&quot;: &quot;#483D8B&quot;,</div><div class="line">  &quot;darkslategray&quot;: &quot;#2F4F4F&quot;,</div><div class="line">  &quot;darkslategrey&quot;: &quot;#2F4F4F&quot;,</div><div class="line">  &quot;darkturquoise&quot;: &quot;#00CED1&quot;,</div><div class="line">  &quot;darkviolet&quot;: &quot;#9400D3&quot;,</div><div class="line">  &quot;deeppink&quot;: &quot;#FF1493&quot;,</div><div class="line">  &quot;deepskyblue&quot;: &quot;#00BFFF&quot;,</div><div class="line">  &quot;dimgray&quot;: &quot;#696969&quot;,</div><div class="line">  &quot;dimgrey&quot;: &quot;#696969&quot;,</div><div class="line">  &quot;dodgerblue&quot;: &quot;#1E90FF&quot;,</div><div class="line">  &quot;firebrick&quot;: &quot;#B22222&quot;,</div><div class="line">  &quot;floralwhite&quot;: &quot;#FFFAF0&quot;,</div><div class="line">  &quot;forestgreen&quot;: &quot;#228B22&quot;,</div><div class="line">  &quot;fuchsia&quot;: &quot;#FF00FF&quot;,</div><div class="line">  &quot;gainsboro&quot;: &quot;#DCDCDC&quot;,</div><div class="line">  &quot;ghostwhite&quot;: &quot;#F8F8FF&quot;,</div><div class="line">  &quot;gold&quot;: &quot;#FFD700&quot;,</div><div class="line">  &quot;goldenrod&quot;: &quot;#DAA520&quot;,</div><div class="line">  &quot;gray&quot;: &quot;#808080&quot;,</div><div class="line">  &quot;green&quot;: &quot;#008000&quot;,</div><div class="line">  &quot;greenyellow&quot;: &quot;#ADFF2F&quot;,</div><div class="line">  &quot;grey&quot;: &quot;#808080&quot;,</div><div class="line">  &quot;honeydew&quot;: &quot;#F0FFF0&quot;,</div><div class="line">  &quot;hotpink&quot;: &quot;#FF69B4&quot;,</div><div class="line">  &quot;indianred&quot;: &quot;#CD5C5C&quot;,</div><div class="line">  &quot;indigo&quot;: &quot;#4B0082&quot;,</div><div class="line">  &quot;ivory&quot;: &quot;#FFFFF0&quot;,</div><div class="line">  &quot;khaki&quot;: &quot;#F0E68C&quot;,</div><div class="line">  &quot;lavender&quot;: &quot;#E6E6FA&quot;,</div><div class="line">  &quot;lavenderblush&quot;: &quot;#FFF0F5&quot;,</div><div class="line">  &quot;lawngreen&quot;: &quot;#7CFC00&quot;,</div><div class="line">  &quot;lemonchiffon&quot;: &quot;#FFFACD&quot;,</div><div class="line">  &quot;lightblue&quot;: &quot;#ADD8E6&quot;,</div><div class="line">  &quot;lightcoral&quot;: &quot;#F08080&quot;,</div><div class="line">  &quot;lightcyan&quot;: &quot;#E0FFFF&quot;,</div><div class="line">  &quot;lightgoldenrodyellow&quot;: &quot;#FAFAD2&quot;,</div><div class="line">  &quot;lightgray&quot;: &quot;#D3D3D3&quot;,</div><div class="line">  &quot;lightgreen&quot;: &quot;#90EE90&quot;,</div><div class="line">  &quot;lightgrey&quot;: &quot;#D3D3D3&quot;,</div><div class="line">  &quot;lightpink&quot;: &quot;#FFB6C1&quot;,</div><div class="line">  &quot;lightsalmon&quot;: &quot;#FFA07A&quot;,</div><div class="line">  &quot;lightseagreen&quot;: &quot;#20B2AA&quot;,</div><div class="line">  &quot;lightskyblue&quot;: &quot;#87CEFA&quot;,</div><div class="line">  &quot;lightslategray&quot;: &quot;#778899&quot;,</div><div class="line">  &quot;lightslategrey&quot;: &quot;#778899&quot;,</div><div class="line">  &quot;lightsteelblue&quot;: &quot;#B0C4DE&quot;,</div><div class="line">  &quot;lightyellow&quot;: &quot;#FFFFE0&quot;,</div><div class="line">  &quot;lime&quot;: &quot;#00FF00&quot;,</div><div class="line">  &quot;limegreen&quot;: &quot;#32CD32&quot;,</div><div class="line">  &quot;linen&quot;: &quot;#FAF0E6&quot;,</div><div class="line">  &quot;magenta&quot;: &quot;#FF00FF&quot;,</div><div class="line">  &quot;maroon&quot;: &quot;#800000&quot;,</div><div class="line">  &quot;mediumaquamarine&quot;: &quot;#66CDAA&quot;,</div><div class="line">  &quot;mediumblue&quot;: &quot;#0000CD&quot;,</div><div class="line">  &quot;mediumorchid&quot;: &quot;#BA55D3&quot;,</div><div class="line">  &quot;mediumpurple&quot;: &quot;#9370DB&quot;,</div><div class="line">  &quot;mediumseagreen&quot;: &quot;#3CB371&quot;,</div><div class="line">  &quot;mediumslateblue&quot;: &quot;#7B68EE&quot;,</div><div class="line">  &quot;mediumspringgreen&quot;: &quot;#00FA9A&quot;,</div><div class="line">  &quot;mediumturquoise&quot;: &quot;#48D1CC&quot;,</div><div class="line">  &quot;mediumvioletred&quot;: &quot;#C71585&quot;,</div><div class="line">  &quot;midnightblue&quot;: &quot;#191970&quot;,</div><div class="line">  &quot;mintcream&quot;: &quot;#F5FFFA&quot;,</div><div class="line">  &quot;mistyrose&quot;: &quot;#FFE4E1&quot;,</div><div class="line">  &quot;moccasin&quot;: &quot;#FFE4B5&quot;,</div><div class="line">  &quot;navajowhite&quot;: &quot;#FFDEAD&quot;,</div><div class="line">  &quot;navy&quot;: &quot;#000080&quot;,</div><div class="line">  &quot;oldlace&quot;: &quot;#FDF5E6&quot;,</div><div class="line">  &quot;olive&quot;: &quot;#808000&quot;,</div><div class="line">  &quot;olivedrab&quot;: &quot;#6B8E23&quot;,</div><div class="line">  &quot;orange&quot;: &quot;#FFA500&quot;,</div><div class="line">  &quot;orangered&quot;: &quot;#FF4500&quot;,</div><div class="line">  &quot;orchid&quot;: &quot;#DA70D6&quot;,</div><div class="line">  &quot;palegoldenrod&quot;: &quot;#EEE8AA&quot;,</div><div class="line">  &quot;palegreen&quot;: &quot;#98FB98&quot;,</div><div class="line">  &quot;paleturquoise&quot;: &quot;#AFEEEE&quot;,</div><div class="line">  &quot;palevioletred&quot;: &quot;#DB7093&quot;,</div><div class="line">  &quot;papayawhip&quot;: &quot;#FFEFD5&quot;,</div><div class="line">  &quot;peachpuff&quot;: &quot;#FFDAB9&quot;,</div><div class="line">  &quot;peru&quot;: &quot;#CD853F&quot;,</div><div class="line">  &quot;pink&quot;: &quot;#FFC0CB&quot;,</div><div class="line">  &quot;plum&quot;: &quot;#DDA0DD&quot;,</div><div class="line">  &quot;powderblue&quot;: &quot;#B0E0E6&quot;,</div><div class="line">  &quot;purple&quot;: &quot;#800080&quot;,</div><div class="line">  &quot;red&quot;: &quot;#FF0000&quot;,</div><div class="line">  &quot;rosybrown&quot;: &quot;#BC8F8F&quot;,</div><div class="line">  &quot;royalblue&quot;: &quot;#4169E1&quot;,</div><div class="line">  &quot;saddlebrown&quot;: &quot;#8B4513&quot;,</div><div class="line">  &quot;salmon&quot;: &quot;#FA8072&quot;,</div><div class="line">  &quot;sandybrown&quot;: &quot;#F4A460&quot;,</div><div class="line">  &quot;seagreen&quot;: &quot;#2E8B57&quot;,</div><div class="line">  &quot;seashell&quot;: &quot;#FFF5EE&quot;,</div><div class="line">  &quot;sienna&quot;: &quot;#A0522D&quot;,</div><div class="line">  &quot;silver&quot;: &quot;#C0C0C0&quot;,</div><div class="line">  &quot;skyblue&quot;: &quot;#87CEEB&quot;,</div><div class="line">  &quot;slateblue&quot;: &quot;#6A5ACD&quot;,</div><div class="line">  &quot;slategray&quot;: &quot;#708090&quot;,</div><div class="line">  &quot;slategrey&quot;: &quot;#708090&quot;,</div><div class="line">  &quot;snow&quot;: &quot;#FFFAFA&quot;,</div><div class="line">  &quot;springgreen&quot;: &quot;#00FF7F&quot;,</div><div class="line">  &quot;steelblue&quot;: &quot;#4682B4&quot;,</div><div class="line">  &quot;tan&quot;: &quot;#D2B48C&quot;,</div><div class="line">  &quot;teal&quot;: &quot;#008080&quot;,</div><div class="line">  &quot;thistle&quot;: &quot;#D8BFD8&quot;,</div><div class="line">  &quot;tomato&quot;: &quot;#FF6347&quot;,</div><div class="line">  &quot;turquoise&quot;: &quot;#40E0D0&quot;,</div><div class="line">  &quot;violet&quot;: &quot;#EE82EE&quot;,</div><div class="line">  &quot;wheat&quot;: &quot;#F5DEB3&quot;,</div><div class="line">  &quot;white&quot;: &quot;#FFFFFF&quot;,</div><div class="line">  &quot;whitesmoke&quot;: &quot;#F5F5F5&quot;,</div><div class="line">  &quot;yellow&quot;: &quot;#FFFF00&quot;,</div><div class="line">  &quot;yellowgreen&quot;: &quot;#9ACD32&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="MatrixBase"><a href="#MatrixBase" class="headerlink" title="MatrixBase"></a>MatrixBase</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public rawElements: GLM.IArray;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get RowCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ColmunCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getAt(row: number, colmun: number): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getBySingleIndex(index: number): number</div></pre></td></tr></table></figure>
+<h2 id="Matrix"><a href="#Matrix" class="headerlink" title="Matrix"></a>Matrix</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static zero(): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public static identity(): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static fromElements(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static fromFunc(f: (w: number, h: number) =&gt; number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(m1: Matrix, m2: Matrix): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static add(m1: Matrix, m2: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static subtract(m1: Matrix, m2: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static scalarMultiply(s: number, m: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static multiply(m1: Matrix, m2: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static trs(t: Vector3, rot: Quaternion, s: Vector3): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static negate(m: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static transpose(m: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static transformPoint(m: Matrix, t: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static transformNormal(m: Matrix, t: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static transform(m: Matrix, t: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static determinant(m: Matrix): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static inverse(m: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static translate(v: Vector3): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static scale(v: Vector3): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static rotateX(angle: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static rotateY(angle: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static rotateZ(angle: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static rotationQuaternion(quat_: Quaternion): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static frustum(left: number, right: number, bottom: number, top: number, near: number, far: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static perspective(fovy: number, aspect: number, near: number, far: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static lookAt(eye: Vector3, lookAt: Vector3, up: Vector3): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getAt(row: number, colmun: number): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public setAt(row: number, colmun: number, val: number): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getBySingleIndex(index: number): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getColmun(col: number): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getRow(row: number): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public multiplyWith(m: Matrix): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(m: Matrix): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get RowCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ColmunCount(): number</div></pre></td></tr></table></figure>
+<h2 id="MatrixArray"><a href="#MatrixArray" class="headerlink" title="MatrixArray"></a>MatrixArray</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static getIdentityMatrixArray(length: number): MatrixArray</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getAt(index: number): Matrix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public setAt(index: number, matrix: Matrix): void</div></pre></td></tr></table></figure>
+<h2 id="PointList"><a href="#PointList" class="headerlink" title="PointList"></a>PointList</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static initializeWithCube(list: PointList): PointList</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public addPoint(point: Vector3): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public transform(transformMatrix: Matrix): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public clear(): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getBoundingBox(): AABB</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaPoints(): string</div></pre></td></tr></table></figure>
+<h2 id="Quaternion"><a href="#Quaternion" class="headerlink" title="Quaternion"></a>Quaternion</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public rawElements: GLM.IArray;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(q1: Quaternion, q2: Quaternion): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static add(q1: Quaternion, q2: Quaternion): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static multiply(q1: Quaternion, q2: Quaternion): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static angleAxis(angle: number, axis: Vector3): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static euler(x: number, y: number, z: number): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static eulerXYZ(x: number, y: number, z: number): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static slerp(q1: Quaternion, q2: Quaternion, t: number): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static fromToRotation(from: Vector3, to: Vector3): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static lookRotation(forward: Vector3, upVec?: Vector3): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get Identity(): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get eularAngles()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set eularAngles(v: Vector3)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get X(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Y(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Z(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get W(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ImaginaryPart(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Conjugate(): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Length(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(q: Quaternion): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public normalize(): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public inverse(): Quaternion</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toAngleAxisString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public factoringQuaternionZXY(): &#123; x: number, y: number, z: number &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public factoringQuaternionXYZ(): &#123; x: number, y: number, z: number &#125;</div></pre></td></tr></table></figure>
+<h2 id="Rectangle"><a href="#Rectangle" class="headerlink" title="Rectangle"></a>Rectangle</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(r1: Rectangle, r2: Rectangle): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static edgeSizeEquals(r1: Rectangle, r2: Rectangle): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Left(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Right(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Top(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Bottom(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Width(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Height(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public contains(point: Vector2): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public contains(x: number, y: number): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public contains(xOrPoint: number | Vector2, y?: number): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toLocal(x: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toLocal(x: number, y: number): number[]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toLocal(xOrPoint: Vector2 | number, y?: number): any</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<h2 id="VectorBase"><a href="#VectorBase" class="headerlink" title="VectorBase"></a>VectorBase</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public rawElements: GLM.IArray;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get magnitude()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get sqrMagnitude(): number</div></pre></td></tr></table></figure>
+<h2 id="Vector2"><a href="#Vector2" class="headerlink" title="Vector2"></a>Vector2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get XUnit(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get YUnit(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get One(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get Zero(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static copy(vec: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static parse(str: string): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static dot(v1: Vector2, v2: Vector2): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static add(v1: Vector2, v2: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static subtract(v1: Vector2, v2: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static multiply(s: number, v: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static negate(v1: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(v1: Vector2, v2: Vector2): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static nearlyEquals(v1: Vector2, v2: Vector2): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static normalize(v1: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static min(v1: Vector2, v2: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static max(v1: Vector2, v2: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static angle(v1: Vector2, v2: Vector2): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get normalized()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get X(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Y(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set X(x: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set Y(y: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public dotWith(v: Vector2): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public addWith(v: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public subtractWith(v: Vector2): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public multiplyWith(s: number): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public negateThis(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(v: Vector2): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public nearlyEqualWith(v: Vector2): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public normalizeThis(): Vector2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toDisplayString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaString(): string</div></pre></td></tr></table></figure>
+<h2 id="Vector3"><a href="#Vector3" class="headerlink" title="Vector3"></a>Vector3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get XUnit(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get YUnit(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get ZUnit(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get Zero(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get One(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static copy(source: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static dot(v1: Vector3, v2: Vector3): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static add(v1: Vector3, v2: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static subtract(v1: Vector3, v2: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static multiply(s: number, v: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static negate(v1: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(v1: Vector3, v2: Vector3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static nearlyEquals(v1: Vector3, v2: Vector3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static normalize(v1: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static cross(v1: Vector3, v2: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static min(v1: Vector3, v2: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static max(v1: Vector3, v2: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static angle(v1: Vector3, v2: Vector3): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static parse(str: string): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get normalized()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get X(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Y(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Z(): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set X(x: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set Y(y: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set Z(z: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public normalizeThis(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public dotWith(v: Vector3): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public addWith(v: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public subtractWith(v: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public multiplyWith(s: number): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public negateThis(): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(v: Vector3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public nearlyEqualWith(v: Vector3): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public crossWith(v: Vector3): Vector3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toDisplayString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number</div></pre></td></tr></table></figure>
+<h2 id="Vector4"><a href="#Vector4" class="headerlink" title="Vector4"></a>Vector4</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get XUnit(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get YUnit(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get ZUnit(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get WUnit(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get One(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static get Zero(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static copy(vec: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static dot(v1: Vector4, v2: Vector4): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static add(v1: Vector4, v2: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static subtract(v1: Vector4, v2: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static multiply(s: number, v: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static negate(v1: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(v1: Vector4, v2: Vector4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static nearlyEquals(v1: Vector4, v2: Vector4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static normalize(v1: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static min(v1: Vector4, v2: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static max(v1: Vector4, v2: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static angle(v1: Vector4, v2: Vector4): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static parse(str: string): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get normalized()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get X()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Y()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get Z()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get W()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set X(x: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set Y(y: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set Z(z: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public set W(w: number)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public normalizeThis(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public dotWith(v: Vector4): number</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public addWith(v: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public subtractWith(v: Vector4): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public multiplyWith(s: number): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public negateThis(): Vector4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(v: Vector4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public nearlyEqualWith(v: Vector4): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get ElementCount(): number public toString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toDisplayString(): string</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public toMathematicaString(): string</div></pre></td></tr></table></figure>
+<h2 id="VectorArray"><a href="#VectorArray" class="headerlink" title="VectorArray"></a>VectorArray</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public rawElements: number[]; public static zeroVectorArray(dimension: number, length: number): VectorArray</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static fromArray(dimension: number, source: number[]): VectorArray</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static equals(v1: VectorArray, v2: VectorArray): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public equalWith(v1: VectorArray): boolean</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public appendVector(vector: VectorBase): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public setVector(index: number, vector: VectorBase): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public setRawArray(index: number, rawArray: number[]): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getVector&lt;t extends=&quot;&quot; vectorbase=&quot;&quot;&gt;(index: number): T&lt;/t&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public setVectorArray(vectors: VectorBase[], offset = 0): void</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public getVectorArray&lt;t extends=&quot;&quot; vectorbase=&quot;&quot;&gt;(): T[]&lt;/t&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public get dimension(): number</div></pre></td></tr></table></figure>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/api/grimoirejs-math.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

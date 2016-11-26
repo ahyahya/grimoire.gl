@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>プラグイン仕様 | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="grimoire.jsでは、プラグインを用いてユーザーが新たに使用可能なタグが増えたり、インターフェースを拡張することができる。これらのプラグインを増やし、Web上に誰でも再利用可能な様々なタグベースの機能を蓄積するために、それぞれのプラグインは以下の仕様を満たす必要がある。
+これらの機能を満たすためのテンプレートを提供するためのパッケージを提供してはいるが、もし自前のビルド環境を用いる場合は以下">
+<meta property="og:type" content="website">
+<meta property="og:title" content="プラグイン仕様">
+<meta property="og:url" content="http://grimoire.gl/guide/plugin-specification.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="grimoire.jsでは、プラグインを用いてユーザーが新たに使用可能なタグが増えたり、インターフェースを拡張することができる。これらのプラグインを増やし、Web上に誰でも再利用可能な様々なタグベースの機能を蓄積するために、それぞれのプラグインは以下の仕様を満たす必要がある。
+これらの機能を満たすためのテンプレートを提供するためのパッケージを提供してはいるが、もし自前のビルド環境を用いる場合は以下">
+<meta property="og:updated_time" content="2016-11-26T01:44:34.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="プラグイン仕様">
+<meta name="twitter:description" content="grimoire.jsでは、プラグインを用いてユーザーが新たに使用可能なタグが増えたり、インターフェースを拡張することができる。これらのプラグインを増やし、Web上に誰でも再利用可能な様々なタグベースの機能を蓄積するために、それぞれのプラグインは以下の仕様を満たす必要がある。
+これらの機能を満たすためのテンプレートを提供するためのパッケージを提供してはいるが、もし自前のビルド環境を用いる場合は以下">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      
+<div id="column-wrap">
+  <aside id="sidebar">
+  <div id="doc-title">GUIDE</div>
+  <ul id="list">
+    
+      <li class="">
+        <a href="/guide/download.html">ダウンロード</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/core-messages.html">コアメッセージ</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/index.html">ノード及びコンポーネントの概要</a>
+      </li>
+    
+      <li class="">
+        <a href="/guide/sort.html">sortシェーダー</a>
+      </li>
+    
+      <li class="active">
+        <a href="/guide/plugin-specification.html">プラグイン仕様</a>
+      </li>
+    
+  </ul>
+</aside>
+
+  <div id="content">
+    <h1 id="content-title">プラグイン仕様</h1>
+    <p>grimoire.jsでは、プラグインを用いてユーザーが新たに使用可能なタグが増えたり、インターフェースを拡張することができる。<br>これらのプラグインを増やし、Web上に誰でも再利用可能な様々なタグベースの機能を蓄積するために、それぞれのプラグインは以下の仕様を満たす必要がある。</p>
+<p>これらの機能を満たすためのテンプレートを提供するためのパッケージを提供してはいるが、もし自前のビルド環境を用いる場合は以下の仕様を考慮しなければならない。</p>
+<h2 id="フォルダ構成"><a href="#フォルダ構成" class="headerlink" title="フォルダ構成"></a>フォルダ構成</h2><p>プラグインをnpmにpublishする際には以下の2つのフォルダが必ず含まれる。</p>
+<ul>
+<li>ref</li>
+<li>register</li>
+</ul>
+<h2 id="ファイル構成"><a href="#ファイル構成" class="headerlink" title="ファイル構成"></a>ファイル構成</h2><h3 id="register-index-js"><a href="#register-index-js" class="headerlink" title="register/index.js"></a>register/index.js</h3><p>プラグインのユーザーが<code>require(&quot;プラグイン名/register&quot;)</code>を読んだ際に読み込まれるファイルである。このjavascriptファイルには、プラグイン内の全ファイルがバンドリングされた状態で出力されるべきである。</p>
+<p>また、このファイルのexportは以下のようなオブジェクトを出力する仕様を持つ。</p>
+<p>例えば、あるプラグインが以下のようなファイルを持っていたとする。</p>
+<ul>
+<li>src/A.js</li>
+<li>src/B/C.js</li>
+<li>src/B/D.js</li>
+</ul>
+<p>このようなファイルを持っている場合は、index.jsは以下のようなオブジェクトをexportしなくてはならない。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">A</span>:<span class="built_in">require</span>(<span class="string">"./A.js"</span>),</div><div class="line">  <span class="attr">B</span>:&#123;</div><div class="line">    <span class="attr">C</span>:<span class="built_in">require</span>(<span class="string">"./B.js"</span>),</div><div class="line">    <span class="attr">D</span>:<span class="built_in">require</span>(<span class="string">"./C.js"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>また、同時にこのコードが呼ばれると出力する上記のようなオブジェクトそのものを<code>window.GrimoireJS.lib.</code>に対して代入する必要がある。</p>
+<p><strong>注意点</strong></p>
+<ul>
+<li>バンドリング済みのファイルに、依存先のGrimoire.jsのプラグインは含めてはならない。<br>(プラグイン内で<code>require(&quot;依存先ライブラリ名/register&quot;)</code>を呼んではならない。<code>require(&quot;依存先ライブラリ名/ref/PATH/TO/MODULE&quot;)</code>は参照なので問題ない。)</li>
+<li>ソースフォルダの中では、フォルダAとファイルA.jsが同時に存在してはならない。(この場合、上記のindex.jsはうまく生成することができない。)</li>
+</ul>
+<h3 id="refフォルダ"><a href="#refフォルダ" class="headerlink" title="refフォルダ"></a>refフォルダ</h3><p>プラグインないの各ソースファイルに対して参照を取得するためのファイルが含まれる。</p>
+<p>例えば、<code>src/B/C.js</code>に対しては、以下のような内容をexportする<code>ref/B/C.js</code>を生成する。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.GrimoireJS.lib.&#123;&#123;ライブラリ名&#125;&#125;.B.C;</div></pre></td></tr></table></figure>
+<p>また、Typescriptを用いてライブラリにアクセスするユーザーを考慮するために、以下の2つのうちどちらかのファイルを上記の<code>src/B/C.js</code>に対して<code>ref/B/C.d.ts</code>を生成する必要がある。</p>
+<p><strong>src/B/C.tsが存在するとき(プラグイン自体がTypescriptで記述されている時)</strong></p>
+<p>ライブラリの<code>src/B/C.ts</code>をコンパイルされた時に生成される<code>d.ts</code>ファイル(型宣言ファイルを用いる)</p>
+<p><strong>src/B/C.tsが存在しないとき(プラグイン自体がTypescriptで記述されていない時)</strong></p>
+<p>以下のような<code>d.ts</code>ファイルをそれぞれ生成する。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> v:<span class="built_in">any</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> v;</div></pre></td></tr></table></figure>
+<h3 id="ref-index-js"><a href="#ref-index-js" class="headerlink" title="ref/index.js"></a>ref/index.js</h3><p>以下のオブジェクトをexportする必要がある。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.GrimoireJS.lib.&#123;&#123;ライブラリ名&#125;&#125;;</div></pre></td></tr></table></figure>
+<h2 id="grimoirejs-cauldronのヘルパーコマンド"><a href="#grimoirejs-cauldronのヘルパーコマンド" class="headerlink" title="grimoirejs-cauldronのヘルパーコマンド"></a>grimoirejs-cauldronのヘルパーコマンド</h2><p>上記の仕様を満たすためのいくつかの自動生成コマンドを、<code>grimoirejs-cauldron</code>パッケージが内包している。</p>
+<h3 id="generate-exposureコマンド"><a href="#generate-exposureコマンド" class="headerlink" title="generate-exposureコマンド"></a>generate-exposureコマンド</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  cauldron generate-exposure --src ./src --dest ./src/index.ts --ts --main ./src/main.ts</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">パラメータ名</th>
+<th style="text-align:center">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">src</td>
+<td style="text-align:center">参照するファイル(プラグインで用いるファイル)の含まれるフォルダ</td>
+</tr>
+<tr>
+<td style="text-align:center">dest</td>
+<td style="text-align:center">生成するjsファイル(typescriptの場合はtsファイル)</td>
+</tr>
+<tr>
+<td style="text-align:center">ts</td>
+<td style="text-align:center">typescriptを生成すべきかどうか</td>
+</tr>
+<tr>
+<td style="text-align:center">main</td>
+<td style="text-align:center">プラグインの登録処理で呼ばれるべきファイル(プラグインのエントリーポイント)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="generate-referenceコマンド"><a href="#generate-referenceコマンド" class="headerlink" title="generate-referenceコマンド"></a>generate-referenceコマンド</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  cauldron generate-reference --src ./src --dest ./src/index.ts --ts --main ./src/main.ts --dts ./ref</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">パラメータ名</th>
+<th style="text-align:center">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">src</td>
+<td style="text-align:center">参照するファイル(プラグインで用いるファイル)の含まれるフォルダ</td>
+</tr>
+<tr>
+<td style="text-align:center">dest</td>
+<td style="text-align:center">生成するjsファイル(typescriptの場合はtsファイル)</td>
+</tr>
+<tr>
+<td style="text-align:center">ts</td>
+<td style="text-align:center">typescriptを生成すべきかどうか</td>
+</tr>
+<tr>
+<td style="text-align:center">main</td>
+<td style="text-align:center">プラグインの登録処理で呼ばれるべきファイル(プラグインのエントリーポイント)</td>
+</tr>
+<tr>
+<td style="text-align:center">dts</td>
+<td style="text-align:center">dtsフォルダを生成する先(基本的にrefフォルダ)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="babelのポリフィル系の留意点"><a href="#babelのポリフィル系の留意点" class="headerlink" title="babelのポリフィル系の留意点"></a>babelのポリフィル系の留意点</h2><p>refやregister内のjsファイルは全てbabel後、es2015準拠のコードでなければならない。ただし、<code>babel-polyfill</code>を各プラグインに入れてしまうと困ってしまうので、以下の例外を除いて<code>require(&quot;babel-polyfill&quot;)</code>や<code>transform-runtime</code>プラグインを用いてはならない。</p>
+<h3 id="preset"><a href="#preset" class="headerlink" title="preset"></a>preset</h3><p>Grimoire.jsには、babelの設定のpresetのように、複数のプラグインのセットをプリセットとしてインストールしたり、scriptタグとして用いることができる。<br>このプリセットに<code>grimoirejs</code>が含まれるpresetを用いる場合、scriptタグで用いる対象のみ<code>babel-polyfill</code>を用いる必要がある。(<strong>register/index.jsはrequireされた時に用いられるファイルであるからこれに含めてはならない</strong>)</p>
+<p>また、他のプラグインをscriptからの読み込みで用いられうることを考えると、プラグインを<code>transform-runtime</code>プラグインを用いてバンドリングしてもならない。</p>
+
+    <div id="edit-page">
+      <a href="https://github.com/GrimoireGL/grimoire.gl/blob/master/source/guide/plugin-specification.md" target="_blank">Edit this page on Github</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: sample | Grimoire.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A service-oriented Web3D framework">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grimoire.js">
+<meta property="og:url" content="http://grimoire.gl/tags/sample/index.html">
+<meta property="og:site_name" content="Grimoire.js">
+<meta property="og:description" content="A service-oriented Web3D framework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Grimoire.js">
+<meta name="twitter:description" content="A service-oriented Web3D framework">
+  
+    <link rel="alternate" href="/atom.xml" title="Grimoire.js" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-80429415-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  
+    <header id="header">
+  <a id="logo-wrap" href="/">
+    <div id="logo-icon"></div>
+    <div id="logo-font"></div>
+  </a>
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+    <div id="main">
+      <div id="primary">
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/guide/">Guide</a></li>
+<li><a href="/api/">API</a></li>
+<li><a href="/example/">Example</a></li>
+<li><a href="/tutorial/">Tutorial</a></li>
+<li><a href="https://github.com/GrimoireGL/GrimoireJS">GitHub</a></li>
+
+    </ul>
+  </nav>
+  <div id="logo-icon"></div>
+  <div id="logo-font">Grimoire.js</div>
+  <div id="logo-desc">Web開発のためのWebGLフレームワーク</div>
+  <div id="primary-buttons">
+    <div class="install">
+      <a href="/guide/download.html">ダウンロード</a>
+    </div>
+    <div class="start">
+      <a href="/tutorial/">チュートリアルを始める</a>
+    </div>
+  </div>
+  <div id="social-buttons">
+    <div class="wrap">
+      <script async defer src="https://jthree-slackin.herokuapp.com/slackin.js"></script>
+      <iframe src="https://ghbtns.com/github-btn.html?user=GrimoireGL&repo=GrimoireJS&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+    </div>
+  </div>
+  <div id="bg">
+    <script type="text/javascript" src="gr/grimoire-preset-basic.min.js"></script>
+    <script type="text/goml" src="gr/index.goml"></script>
+  </div>
+</div>
+<div id="sample">
+  <div class="front">
+    <div class="title">1分でわかるサンプル</div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">camera</span> <span class="attr">position</span>=<span class="string">"0,0,12"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mesh</span> <span class="attr">geometry</span>=<span class="string">"cube"</span> <span class="attr">texture</span>=<span class="string">"logo.png"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">mesh.components</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Rotate</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">mesh.components</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mesh</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
+
+      <a class="edit-button" title="Edit in web editor!" href="https://grimoiregl.github.io/grimoire.gl-example/#simple">GOML</a>
+    </div>
+    <div class="card">
+      <figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">'white'</span>, <span class="string">'red'</span>, <span class="string">'lime'</span>];</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">  gr(<span class="string">'#canvas'</span>)(<span class="string">'mesh'</span>)</div><div class="line">    .setAttribute(<span class="string">'color'</span>, colors[i % <span class="number">3</span>]);</div><div class="line">  i++;</div><div class="line">}, <span class="number">1000</span>);</div></pre></td></tr></tbody></table></figure>
+
+      <a class="edit-button" title="Edit in web editor!" href="https://grimoiregl.github.io/grimoire.gl-example/#simple">JavaScript</a>
+    </div>
+    <div class="card preview">
+      <script type="text/javascript" src="gr/rotate.js"></script>
+      <script type="text/javascript" src="gr/simple.js"></script>
+      <script type="text/goml" src="gr/simple.goml" id="simple"></script>
+      <a class="edit-button" title="Edit in web editor!" href="https://grimoiregl.github.io/grimoire.gl-example/#simple">Result</a>
+    </div>
+  </div>
+</div>
+<div id="description">
+  <div class="front">
+    <div class="title">WebGLの表現力をもっと手軽に、あなたのサイトでも。</div>
+    <div class="content">2D、3Dのあらゆる表現を今まで使っていたタグを活用して取り入れることができます。もちろん、どんなWebフレームワークと組み合わせるのもあなたの自由です。</div>
+  </div>
+  <div class="small">
+    <ul>
+      <li>
+        <div class="container">
+          <div class="icon"><span class="icon-workflow"></span></div>
+          <div class="title">ワークフロー</div>
+          <div class="content">既存のWeb開発のフローのまま導入ができます。フレームワークやバージョン管理も今まで通り使うことが可能です。</div>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <div class="icon"><span class="icon-htmllike"></span></div>
+          <div class="title">HTMLライク</div>
+          <div class="content">複雑な3DCGの設定や表現もHTMLのような言語、GOMLを記述すれば容易に構築可能です。</div>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <div class="icon"><span class="icon-interface"></span></div>
+          <div class="title">イベントドリブン</div>
+          <div class="content">インタラクティブな操作も、データ志向で記述することが可能です。</div>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <div class="icon"><span class="icon-component"></span></div>
+          <div class="title">コンポーネント</div>
+          <div class="content">再利用性の高いコンポーネントベースの設計で、容易にWebGLの資産を構築できます。</div>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <div class="icon"><span class="icon-plugin"></span></div>
+          <div class="title">プラグイン</div>
+          <div class="content">誰でも簡単にWeb上のWebGL共有資産にアクセスして活用、公開することができます。</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="footer">
+  <a id="get-started-button" href="/guide/download".html>ダウンロード</a>
+  <div id="footer-text">
+    <div id="licence">Released under the <a href="//opensource.org/licenses/MIT">MIT License</a></div>
+    <div id="copyright">Copyright (c) 2016 GrimoireGL</div>
+  </div>
+</div>
+
+    </div>
+  
+</body>
+</html>
