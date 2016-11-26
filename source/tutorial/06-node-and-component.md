@@ -33,7 +33,7 @@ Grimoire.jsでは、一つのGOMLに対して、一つの木が生成されま�
 コンポーネントの属性は対応するノードに露出します。
 
 ```html
-<mesh position="0,0,0" scale="1,1,1" rotation-"y(30d)"></mesh>
+<mesh position="0,0,0" scale="1,1,1" rotation="y(30d)"></mesh>
 ```
 
 そのためGOMLで上記のように記述することが可能になっています。
